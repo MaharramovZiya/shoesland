@@ -1,6 +1,8 @@
-// Presentation/routes/routes.dart
-
+//Routes with get x
 import 'package:get/get.dart';
+import 'package:shoesland/presentation/screens/auth/login/login_screen.dart';
+import 'package:shoesland/presentation/screens/auth/recovery_password/recovery_screen.dart';
+import 'package:shoesland/presentation/screens/auth/register/register_screen.dart';
 import 'package:shoesland/presentation/screens/cart/cart_screen.dart';
 import 'package:shoesland/presentation/screens/details/detail_page.dart';
 import 'package:shoesland/presentation/screens/favorites/favorites_screen.dart';
@@ -49,5 +51,11 @@ class Routes {
     GetPage(name: notifications, page: () => const NotificationScreen()),
     GetPage(name: profile, page: () => const ProfileScreen()),
     GetPage(name: detail, page: () => const DetailPage()),
+
+    //auth Login register recovery password screen to UI
+
+    GetPage(name: login, page: ()=> const LoginScreen(),transition: Transition.fadeIn),
+    GetPage(name: register, page: ()=> const RegisterScreen(),transition: Transition.fade),
+    GetPage(name: recoveryPassword, page: ()=> const RecoveryScreen(),transition: Transition.downToUp),
   ];
 }
