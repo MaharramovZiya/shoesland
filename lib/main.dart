@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/presentation/routes/routes.dart';
-import 'package:shoesland/presentation/screens/splash/splash_screen.dart';
+
+// void main() {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   runApp(SplashScreen(
+//     onInitializationComplete: () => runApp(const MyApp()),
+//     key: UniqueKey(),
+//   ));
+// }
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(SplashScreen(
-    onInitializationComplete: () => runApp(const MyApp()),
-    key: UniqueKey(),
-  ));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colours.backgroundColor,
         ),
       ),
-      initialRoute: Routes.onboardingScreen,
+      initialRoute: Routes.login,
       getPages: Routes.getPages,
     );
   }
