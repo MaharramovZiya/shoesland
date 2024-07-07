@@ -39,6 +39,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
   smooth_page_indicator: ^1.1.0
+  get: ^4.6.6
 
 dev_dependencies:
   flutter_test:
