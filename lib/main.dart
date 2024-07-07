@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoesland/config/routes.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/presentation/routes/routes.dart';
 import 'package:shoesland/presentation/screens/splash/splash_screen.dart';
