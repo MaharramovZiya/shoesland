@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:shoesland/config/routes.dart';
 import 'package:shoesland/core/constants/colours.dart';
+import 'package:shoesland/core/constants/custom_size.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
-import 'package:shoesland/core/widgets/bottom_navigatior_bar_route.dart';
 import 'package:shoesland/data/models/onboard_model.dart';
 import 'package:shoesland/logic/blocs/bloc/onboarding_bloc.dart';
+import 'package:shoesland/presentation/routes/routes.dart';
+import 'package:shoesland/presentation/widgets/custom_button.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -36,6 +40,42 @@ class OnboardingScreen extends StatelessWidget {
                       return SizedBox(
                         child: Stack(
                           children: [
+                            Positioned(
+                              top: 120,
+                              left: 60,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Container(
+                                  width: 15,
+                                  height: 15,
+                                  color: Colours.blueColor,
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 215,
+                              left: 30,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Container(
+                                  width: 15,
+                                  height: 15,
+                                  color: Colours.blueColor,
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 280,
+                              right: 30,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Container(
+                                  width: 15,
+                                  height: 15,
+                                  color: Colours.blueColor,
+                                ),
+                              ),
+                            ),
                             Positioned.fill(
                               child: Column(
                                 children: [
@@ -59,13 +99,14 @@ class OnboardingScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Transform.rotate(
-                                    angle: 0 * 3.1415926535 / 90,
+                                    angle: -5 * 3.1415926535 / 90,
                                     child: Image.asset(
                                       onboardItem.image,
                                       fit: BoxFit.cover,
@@ -102,52 +143,60 @@ class OnboardingScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                 const SizedBox(
-                height: 40,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: SmoothPageIndicator(
-                      effect: const ExpandingDotsEffect(
-                        dotWidth: 15,
-                        dotHeight: 8,
-                        spacing: 10,
-                        activeDotColor: Colors.blue,
-                        dotColor: Colors.grey,
+                const SizedBox(
+                  height: 40,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: SmoothPageIndicator(
+                        effect: const ExpandingDotsEffect(
+                          dotWidth: 15,
+                          dotHeight: 8,
+                          spacing: 10,
+                          activeDotColor: Colors.blue,
+                          dotColor: Colours.bgNikeTxtColor,
+                        ),
+                        controller: _pageController,
+                        count: onboardList.length,
                       ),
-                      controller: _pageController,
-                      count: onboardList.length,
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: TextButton(
-                      onPressed: () {
-                        final currentIndex =
-                            context.read<OnboardingBloc>().state.currentPage;
-                        if (currentIndex == onboardList.length - 1) {
-                Navigator.pushNamed(context, Routes.bottomNavigationBar);
+                    Padding(
+                      padding: EdgeInsets.only(right: 17),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        width: CustomSize(context).width / 2.2,
+                        child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 0),
+                            child: CustomButton(
+                                text:
+                                    state.currentPage == onboardList.length - 1
+                                        ? LocalStrings().onboardingGetStarted
+                                        : LocalStrings().onboardNext,
+                                onPressed: () {
+                                  final currentIndex = context
+                                      .read<OnboardingBloc>()
+                                      .state
+                                      .currentPage;
+                                  if (currentIndex == onboardList.length - 1) {
+                                    //nav
 
-                        } else {
-                          _pageController.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeInOut,
-                          );
-                        }
-                      },
-                      child: Text(
-                        state.currentPage == onboardList.length - 1
-                            ? LocalStrings().onboardingGetStarted
-                            : LocalStrings().onboardNext,
-                        style: const TextStyle(color: Colors.blue),
+                                    Get.toNamed(Routes.bottomNavigationBar);
+                                  } else {
+                                    _pageController.nextPage(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      curve: Curves.easeInOut,
+                                    );
+                                  }
+                                })),
                       ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
               ],
             );
           },

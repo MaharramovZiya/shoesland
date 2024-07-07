@@ -5,6 +5,10 @@ const HomeScreen({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context){
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: Text("Home view"),
+      ),
+    );
   }
 }

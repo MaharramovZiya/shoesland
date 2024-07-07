@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 3))
+    Future.delayed(const Duration(seconds: 4))
         .then((_) => widget.onInitializationComplete());
   }
 
@@ -33,8 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
         body: Center(
-          child: 
-          Container(
+          child: Container(
             width: customSize.width,
             height: customSize.height,
             decoration: BoxDecoration(
@@ -45,20 +44,18 @@ class _SplashScreenState extends State<SplashScreen> {
                   blurRadius: 5,
                   offset: const Offset(0, 4),
                 ),
-                
-
               ],
-              image: const DecorationImage(image: AssetImage(LocalImages.splash),
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.high
-              ),
-              
-            ),child: Center(
-              child: GeneralTextWidget(LocalStrings().splashTxt, textStyle: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-                color: Colours.white
-              )),
+              image: const DecorationImage(
+                  image: AssetImage(LocalImages.splash),
+                  fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high),
+            ),
+            child: Center(
+              child: GeneralTextWidget(LocalStrings().splashTxt,
+                  textStyle: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      color: Colours.white)),
             ),
           ),
         ),

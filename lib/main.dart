@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shoesland/config/routes.dart';
 import 'package:shoesland/core/constants/colours.dart';
+import 'package:shoesland/presentation/routes/routes.dart';
 import 'package:shoesland/presentation/screens/splash/splash_screen.dart';
 
 void main() {
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Main',
       theme: ThemeData(
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       initialRoute: Routes.onboardingScreen,
-      onGenerateRoute: Routes.generateRoute,
+      getPages: Routes.getPages,
     );
   }
 }
