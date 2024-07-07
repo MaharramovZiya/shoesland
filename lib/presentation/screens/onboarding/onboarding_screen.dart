@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoesland/config/routes.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
+import 'package:shoesland/core/widgets/bottom_navigatior_bar_route.dart';
 import 'package:shoesland/data/models/onboard_model.dart';
 import 'package:shoesland/logic/blocs/bloc/onboarding_bloc.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
@@ -127,7 +129,8 @@ class OnboardingScreen extends StatelessWidget {
                         final currentIndex =
                             context.read<OnboardingBloc>().state.currentPage;
                         if (currentIndex == onboardList.length - 1) {
-                          //Navigator to login screen
+                Navigator.pushNamed(context, Routes.bottomNavigationBar);
+
                         } else {
                           _pageController.nextPage(
                             duration: const Duration(milliseconds: 300),
