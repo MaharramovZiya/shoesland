@@ -4,7 +4,6 @@ import 'package:shoesland/presentation/screens/auth/login/login_screen.dart';
 import 'package:shoesland/presentation/screens/auth/recovery_password/recovery_screen.dart';
 import 'package:shoesland/presentation/screens/auth/register/register_screen.dart';
 import 'package:shoesland/presentation/screens/cart/cart_screen.dart';
-import 'package:shoesland/presentation/screens/details/detail_page.dart';
 import 'package:shoesland/presentation/screens/favorites/favorites_screen.dart';
 import 'package:shoesland/presentation/screens/home/home_screen.dart';
 import 'package:shoesland/presentation/screens/notifications/notification_screen.dart';
@@ -43,19 +42,29 @@ class Routes {
     GetPage(name: onboardingScreen, page: () => const OnboardingScreen()),
     GetPage(
         name: bottomNavigationBar,
-        page: () => BottomNav(),
+        page: () => const BottomNav(),
         transition: Transition.fade),
     GetPage(name: home, page: () => const HomeScreen()),
     GetPage(name: favourites, page: () => const FavoritesScreen()),
     GetPage(name: cartScreen, page: () => const CartScreen()),
     GetPage(name: notifications, page: () => const NotificationScreen()),
     GetPage(name: profile, page: () => const ProfileScreen()),
-    GetPage(name: detail, page: () => const DetailPage()),
+    // ignore: prefer_const_constructors
+    // GetPage(name: detail, page: () =>  DetailPage(product: productList.first,)),
 
     //auth Login register recovery password screen to UI
 
-    GetPage(name: login, page: ()=> const LoginScreen(),transition: Transition.fadeIn),
-    GetPage(name: register, page: ()=> const RegisterScreen(),transition: Transition.fade),
-    GetPage(name: recoveryPassword, page: ()=> const RecoveryScreen(),transition: Transition.downToUp),
+    GetPage(
+        name: login,
+        page: () => const LoginScreen(),
+        transition: Transition.fadeIn),
+    GetPage(
+        name: register,
+        page: () => const RegisterScreen(),
+        transition: Transition.fade),
+    GetPage(
+        name: recoveryPassword,
+        page: () => const RecoveryScreen(),
+        transition: Transition.fade),
   ];
 }

@@ -8,12 +8,12 @@ class AuthCustomTitle extends StatelessWidget {
   final TextStyle? subtitleStyle;
 
   const AuthCustomTitle({
-    Key? key,
+    super.key,
     required this.title,
     required this.subtitle,
     this.titleStyle,
     this.subtitleStyle,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

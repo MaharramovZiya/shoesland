@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:shoesland/data/models/product_model.dart';
 
 class DetailPage extends StatelessWidget {
-const DetailPage({ Key? key }) : super(key: key);
-
+const DetailPage({ super.key, required this.product });
+final Product product;
   @override
   Widget build(BuildContext context){
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: Image.asset(product.imagePath),
+      ),
+    );
   }
 }

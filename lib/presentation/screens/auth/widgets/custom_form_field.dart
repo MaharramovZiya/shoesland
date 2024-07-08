@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoesland/logic/cubits/password_cubit.dart';
 
 class CustomFormField extends StatelessWidget {
   final String hintText;
@@ -16,7 +18,7 @@ class CustomFormField extends StatelessWidget {
   final String? Function(String?)? validator;
 
   const CustomFormField({
-    Key? key,
+    super.key,
     required this.hintText,
     this.onChanged,
     this.isPassword = false,
@@ -30,35 +32,44 @@ class CustomFormField extends StatelessWidget {
     this.obscureText = false,
     this.prefixIcon,
     this.onPrefixIconPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: validator,
-      controller: controller,
-      cursorColor: Colors.black,
-      obscureText: obscureText,
-      keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
-      onChanged: onChanged,
-      decoration: InputDecoration(
-        prefixIcon: prefixIcon != null
-            ? IconButton(onPressed: onPrefixIconPressed, icon: Icon(prefixIcon))
-            : null,
-        fillColor: Colors.white,
-        filled: true,
-        errorText: errorText,
-        hintText: hintText,
-        suffixIcon: suffixIcon != null
-            ? IconButton(
-                icon: Icon(suffixIcon),
-                onPressed: onSuffixIconPressed,
-              )
-            : null,
-        border: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(40),
-        ),
+    return BlocProvider(
+      create: (context) => PasswordCubit(),
+      child: BlocBuilder<PasswordCubit, bool>(
+        builder: (context, obscureText) {
+          return TextFormField(
+            validator: validator,
+            controller: controller,
+            cursorColor: Colors.black,
+            obscureText: obscureText,
+            keyboardType:
+                isEmail ? TextInputType.emailAddress : TextInputType.text,
+            onChanged: onChanged,
+            decoration: InputDecoration(
+              prefixIcon: prefixIcon != null
+                  ? IconButton(
+                      onPressed: onPrefixIconPressed, icon: Icon(prefixIcon))
+                  : null,
+              fillColor: Colors.white,
+              filled: true,
+              errorText: errorText,
+              hintText: hintText,
+              suffixIcon: suffixIcon != null
+                  ? IconButton(
+                      icon: Icon(obscureText ? Icons.visibility : Icons.visibility_off),
+                      onPressed: () => context.read<PasswordCubit>().togglePasswordVisibility(),
+                    )
+                  : null,
+              border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(40),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

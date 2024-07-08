@@ -14,7 +14,7 @@ import 'package:shoesland/presentation/widgets/custom_button.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+  const RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
