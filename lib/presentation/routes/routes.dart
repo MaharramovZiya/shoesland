@@ -43,7 +43,7 @@ class Routes {
     GetPage(name: onboardingScreen, page: () => const OnboardingScreen()),
     GetPage(
         name: bottomNavigationBar,
-        page: () => BottomNav(),
+        page: () => const BottomNav(),
         transition: Transition.fade),
     GetPage(name: home, page: () => const HomeScreen()),
     GetPage(name: favourites, page: () => const FavoritesScreen()),
@@ -54,8 +54,17 @@ class Routes {
 
     //auth Login register recovery password screen to UI
 
-    GetPage(name: login, page: ()=> const LoginScreen(),transition: Transition.fadeIn),
-    GetPage(name: register, page: ()=> const RegisterScreen(),transition: Transition.fade),
-    GetPage(name: recoveryPassword, page: ()=> const RecoveryScreen(),transition: Transition.downToUp),
+    GetPage(
+        name: login,
+        page: () => const LoginScreen(),
+        transition: Transition.fadeIn),
+    GetPage(
+        name: register,
+        page: () => const RegisterScreen(),
+        transition: Transition.fade),
+    GetPage(
+        name: recoveryPassword,
+        page: () => const RecoveryScreen(),
+        transition: Transition.fade),
   ];
 }

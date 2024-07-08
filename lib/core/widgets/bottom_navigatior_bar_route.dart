@@ -7,6 +7,8 @@ import 'package:shoesland/presentation/screens/notifications/notification_screen
 import 'package:shoesland/presentation/screens/profile/profile_screen.dart';
 
 class BottomNav extends StatefulWidget {
+  const BottomNav({super.key});
+
   @override
   _BottomNavState createState() => _BottomNavState();
 }
@@ -37,10 +39,10 @@ class _BottomNavState extends State<BottomNav> {
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
-              color: Color(0xFF5B9EE1).withOpacity(0.5),
+              color: const Color(0xFF5B9EE1).withOpacity(0.5),
               spreadRadius: 3,
               blurRadius: 7,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),

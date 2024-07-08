@@ -14,7 +14,7 @@ import 'package:shoesland/presentation/widgets/custom_button.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> with FormFieldMixin {
               children: [
                 Align(
                   alignment: Alignment.center,
-                  child:  AuthCustomTitle(
+                  child: AuthCustomTitle(
                     title: LocalStrings().loginTitle,
                     subtitle: LocalStrings().logSubTitle,
                   ),
@@ -68,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> with FormFieldMixin {
                       fontWeight: FontWeight.w400, fontSize: 16),
                 ),
                 CustomFormField(
+                  suffixIcon: Icons.visibility,
                   hintText: LocalStrings().passwordHint,
                   validator: (value) =>
                       CustomValidator(value: value).passwordEmptyCheck,
@@ -75,7 +76,9 @@ class _LoginScreenState extends State<LoginScreen> with FormFieldMixin {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(Routes.recoveryPassword);
+                      },
                       child: GeneralTextWidget(
                         LocalStrings().recoverpassword,
                         textStyle: const TextStyle(

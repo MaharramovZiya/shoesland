@@ -9,7 +9,7 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final PageController _pageController = PageController();
+    final PageController pageController = PageController();
     return Scaffold(
       body: BlocProvider(
         create: (context) => OnboardingBloc(),
@@ -19,12 +19,12 @@ class OnboardingScreen extends StatelessWidget {
               children: [
 
                 //Page view in the here have all comments with descriptions
-                OnboardPageViewWidget(pageController: _pageController),
+                OnboardPageViewWidget(pageController: pageController),
                 const SizedBox(
                   height: 40,
                 ),
                 //Indicator and Button in row
-                PageIndicatorWidget(pageController: _pageController),
+                PageIndicatorWidget(pageController: pageController),
               ],
             );
           },

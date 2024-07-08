@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
+// ignore: non_constant_identifier_names
 Widget AccountController({
   required String promptText,
   required String actionText,
