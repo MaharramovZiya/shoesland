@@ -41,8 +41,17 @@ class LocalStrings {
   //Recovery password texts
 
   final String recoveryTitle = "Recovery Password";
-  final String recoverySubTitle = "Please Enter Your Email Address To Recieve a Verification Code";
-
+  final String recoverySubTitle =
+      "Please Enter Your Email Address To Recieve a Verification Code";
 
   final String continueTxt = "Continue";
+
+  //Home screen texts
+
+  final String storeLocation = "Store Location";
+  final String location = "Baku, Azerbaijan";
+
+  //search txt
+
+  final String lookforShoes = 'Looking for shoes';
 }

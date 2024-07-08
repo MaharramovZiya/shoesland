@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colours.backgroundColor,
         ),
       ),
-      initialRoute: Routes.login,
+      initialRoute: Routes.bottomNavigationBar,
       getPages: Routes.getPages,
     );
   }
