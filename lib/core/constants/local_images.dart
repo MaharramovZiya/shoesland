@@ -14,8 +14,12 @@ class LocalImages {
   static const String shoes_img0 = 'assets/images/s_img0.png';
   static const String shoes_img1 = 'assets/images/s_img1.png';
   static const String shoes_img2 = 'assets/images/s_img2.png';
+  static const String shoes_img3 = 'assets/images/s_img3.png';
   static const String shoes_img4 = 'assets/images/s_img4.png';
-
+  static const String shoes_img5 = 'assets/images/s_img5.png';
+  static const String shoes_img6 = 'assets/images/s_img6.png';
+  static const String shoes_img7 = 'assets/images/s_img7.png';
+  
   //Shoe logos
 
   static const String l_0 = 'assets/images/l_0.png';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoesland/core/constants/colours.dart';
+import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
 import 'package:shoesland/data/models/category_model.dart';
 import 'package:shoesland/data/models/product_model.dart';
@@ -31,7 +32,7 @@ Widget _buildUi(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const NavigateTopMenu(),
+            _buildNavigateToMenu(),
             const SizedBox(
               height: 20,
             ),
@@ -44,6 +45,7 @@ Widget _buildUi(BuildContext context) {
     ),
   ));
 }
+
 //Category which you can use what you want see that category
 Widget _buildCategoryMenu() {
   return BlocProvider(
@@ -95,7 +97,21 @@ Widget _buildCategoryMenu() {
     ),
   );
 }
-//Home page main 
+
+//Custom navigate to menu()
+
+Widget _buildNavigateToMenu() {
+  return NavigateTopMenu(
+    leadingIcon: Icons.window_outlined,
+    leadingOnPressed: () {},
+    title: LocalStrings().location,
+    customWidget: Text(LocalStrings().storeLocation),
+    trallingIcon: Icons.shopping_bag_outlined,
+    trallingOnPressed: () {},
+  );
+}
+
+//Home page main
 Widget _buildProductDesign(BuildContext context) {
   return Column(
     children: [
@@ -110,7 +126,6 @@ Widget _buildProductDesign(BuildContext context) {
   );
 }
 
-
 //Popular card
 Widget _buildPopularSection(BuildContext context) {
   return Row(
@@ -122,7 +137,7 @@ Widget _buildPopularSection(BuildContext context) {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => DetailPage(product: product),
+              builder: (context) => DetailScreen(product: product),
             ),
           );
         },
@@ -130,14 +145,20 @@ Widget _buildPopularSection(BuildContext context) {
     }).toList(),
   );
 }
+
 //Arrival
 Widget _buildArrivalSection(BuildContext context) {
+  Product product = productList[2];
+
   return ArrivalWidget(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => DetailPage(product: productList.last)));
-      },
-      product: productList.last);
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DetailScreen(product: product),
+        ),
+      );
+    },
+    product: product,
+  );
 }
