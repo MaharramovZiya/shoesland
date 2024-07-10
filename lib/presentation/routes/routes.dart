@@ -52,6 +52,8 @@ class Routes {
     // ignore: prefer_const_constructors
     // GetPage(name: detail, page: () =>  DetailPage(product: productList.first,)),
 
+    //Detail page with getx
+
     //auth Login register recovery password screen to UI
 
     GetPage(

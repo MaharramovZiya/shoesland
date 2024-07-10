@@ -1,11 +1,22 @@
-
 import 'package:flutter/material.dart';
 import 'package:shoesland/core/constants/colours.dart';
-import 'package:shoesland/core/constants/local_strings.dart';
 
 class NavigateTopMenu extends StatelessWidget {
-  const NavigateTopMenu({super.key});
+  const NavigateTopMenu(
+      {super.key,
+      this.trallingIcon,
+      required this.leadingIcon,
+      required this.leadingOnPressed,
+      this.trallingOnPressed,
 
+      required this.title,
+      this.customWidget});
+  final IconData leadingIcon;
+  final IconData? trallingIcon;
+  final VoidCallback leadingOnPressed;
+  final VoidCallback? trallingOnPressed;
+  final String title;
+  final Widget? customWidget;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,8 +26,7 @@ class NavigateTopMenu extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           child: Container(
             color: Colours.white,
-            child: IconButton(
-                onPressed: () {}, icon: const Icon(Icons.window_outlined)),
+            child: IconButton(onPressed: leadingOnPressed, icon: Icon(leadingIcon)),
           ),
         ),
 
@@ -24,8 +34,8 @@ class NavigateTopMenu extends StatelessWidget {
 
         Column(
           children: [
-            Text(LocalStrings().storeLocation),
-            Text(LocalStrings().location)
+            // if (customWidget != null) customWidget!,
+            Text(title),
           ],
         ),
 
@@ -33,9 +43,7 @@ class NavigateTopMenu extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           child: Container(
             color: Colours.white,
-            child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.shopping_bag_outlined)),
+            child: IconButton(onPressed: trallingOnPressed, icon: Icon(trallingIcon)),
           ),
         ),
       ],

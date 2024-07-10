@@ -54,4 +54,23 @@ class LocalStrings {
   //search txt
 
   final String lookforShoes = 'Looking for shoes';
+
+  // see all txt
+
+  final String seeAll = 'See All';
+
+  final String bestSeller = 'BEST SELLER';
+
+  //detail page
+
+  final String gallery = "Gallery";
+  final String size = "Size";
+
+  final String addToCart = 'Add To Cart';
+
+  final String eu = "EU";
+  final String us = "US";
+  final String uk = "UK";
+
+  final String price = 'Price';
 }

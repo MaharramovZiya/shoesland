@@ -57,31 +57,37 @@ class _BottomNavState extends State<BottomNav> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colours.white,
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 6.0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.home),
-              onPressed: () => _onItemTapped(0),
-            ),
-            IconButton(
-              icon: const Icon(Icons.favorite_border),
-              onPressed: () => _onItemTapped(1),
-            ),
-            const SizedBox(width: 48),
-            IconButton(
-              icon: const Icon(Icons.notifications),
-              onPressed: () => _onItemTapped(3),
-            ),
-            IconButton(
-              icon: const Icon(Icons.person),
-              onPressed: () => _onItemTapped(4),
-            ),
-          ],
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(40.0),
+          topRight: Radius.circular(40.0),
+        ),
+        child: BottomAppBar(
+          color: Colours.white,
+          shape: const CircularNotchedRectangle(),
+          notchMargin: 6.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.home),
+                onPressed: () => _onItemTapped(0),
+              ),
+              IconButton(
+                icon: const Icon(Icons.favorite_border),
+                onPressed: () => _onItemTapped(1),
+              ),
+              const SizedBox(width: 48),
+              IconButton(
+                icon: const Icon(Icons.notifications),
+                onPressed: () => _onItemTapped(3),
+              ),
+              IconButton(
+                icon: const Icon(Icons.person),
+                onPressed: () => _onItemTapped(4),
+              ),
+            ],
+          ),
         ),
       ),
     );

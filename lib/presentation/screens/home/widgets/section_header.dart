@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoesland/core/constants/colours.dart';
+import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 class SectionHeader extends StatelessWidget {
@@ -28,7 +29,7 @@ class SectionHeader extends StatelessWidget {
         TextButton(
           onPressed: onSeeAllPressed,
           child: GeneralTextWidget(
-            "See All",
+            LocalStrings().seeAll,
             textStyle: const TextStyle(
               color: Colours.blueColor,
               fontSize: 12,
