@@ -8,7 +8,6 @@ class NavigateTopMenu extends StatelessWidget {
       required this.leadingIcon,
       required this.leadingOnPressed,
       this.trallingOnPressed,
-
       required this.title,
       this.customWidget});
   final IconData leadingIcon;
@@ -26,7 +25,8 @@ class NavigateTopMenu extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           child: Container(
             color: Colours.white,
-            child: IconButton(onPressed: leadingOnPressed, icon: Icon(leadingIcon)),
+            child: IconButton(
+                onPressed: leadingOnPressed, icon: Icon(leadingIcon)),
           ),
         ),
 
@@ -34,8 +34,22 @@ class NavigateTopMenu extends StatelessWidget {
 
         Column(
           children: [
-            // if (customWidget != null) customWidget!,
-            Text(title),
+            if (customWidget != null) customWidget!,
+            Row(
+              children: [
+                const Icon(
+                  Icons.location_on,
+                  color: Colors.orange,
+                ),
+                Text(
+                  title,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15),
+                ),
+              ],
+            )
           ],
         ),
 
@@ -43,7 +57,8 @@ class NavigateTopMenu extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           child: Container(
             color: Colours.white,
-            child: IconButton(onPressed: trallingOnPressed, icon: Icon(trallingIcon)),
+            child: IconButton(
+                onPressed: trallingOnPressed, icon: Icon(trallingIcon)),
           ),
         ),
       ],

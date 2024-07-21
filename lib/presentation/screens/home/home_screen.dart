@@ -102,6 +102,7 @@ Widget _buildCategoryMenu() {
 
 Widget _buildNavigateToMenu() {
   return NavigateTopMenu(
+  
     leadingIcon: Icons.window_outlined,
     leadingOnPressed: () {},
     title: LocalStrings().location,

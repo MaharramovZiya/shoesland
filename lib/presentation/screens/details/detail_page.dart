@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
@@ -94,8 +95,11 @@ Widget _buildDescriptionWidget(BuildContext context, Product product) {
           const SizedBox(
             height: 10,
           ),
+
+          //recommended shoes
           _buildRealtedShoesWidget(product),
           const SizedBox(height: 8),
+          //shoes size text
           _buildSizeTitleWidget(),
           const SizedBox(
             height: 10,
@@ -106,17 +110,61 @@ Widget _buildDescriptionWidget(BuildContext context, Product product) {
           const SizedBox(
             height: 20,
           ),
-          _buildAddToCartWidget(
-            context,
-            product
-          )
+          _buildAddToCartWidget(context, product)
         ],
       ),
     ),
   );
 }
 
-Widget _buildAddToCartWidget(BuildContext context,Product product) {
+//Button add to cart
+Widget _buildAddToCartWidget(BuildContext context, Product product) {
+  //added to cart
+  void showAddToCartDialog(BuildContext context) => showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Positioned(
+                      right: 10,
+                      top: 10,
+                      child: IconButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          icon: const Icon(
+                            Icons.clear_rounded,
+                            color: Colors.black,
+                          ))),
+                  Container(
+                    width: 180,
+                    height: 180,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                    child: Center(
+                        child: Column(
+                      children: [
+                        Lottie.asset('assets/lottie/completed.json',
+                            width: 130),
+                        const Text(
+                          "Shoe added to cart!",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
+                        ),
+                      ],
+                    )),
+                  ),
+                ],
+              ));
+        },
+      );
+
   return Container(
     width: CustomSize(context).width,
     decoration: const BoxDecoration(
@@ -156,7 +204,9 @@ Widget _buildAddToCartWidget(BuildContext context,Product product) {
           width: CustomSize(context).width / 2,
           child: CustomButton(
             text: LocalStrings().addToCart,
-            onPressed: () {},
+            onPressed: () {
+              showAddToCartDialog(context);
+            },
           ),
         ),
       ],
@@ -180,7 +230,11 @@ Widget _buildRealtedShoesWidget(Product product) {
           Product relatedProduct = filteredProducts[index];
           return GestureDetector(
             onTap: () {
-              Get.to(DetailScreen(product: relatedProduct));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailScreen(product: product),
+                  ));
             },
             child: Container(
               width: 60,
@@ -195,6 +249,8 @@ Widget _buildRealtedShoesWidget(Product product) {
         }),
   );
 }
+
+//Added shoes to cart card design
 
 Widget _buildSizeTitleWidget() {
   return Row(
@@ -235,6 +291,7 @@ Widget _buildSizeTitleWidget() {
   );
 }
 
+//User will be select shoe size
 Widget _buildShoeSizeWidget() {
   return BlocProvider(
     create: (context) => ShoeSizeCubit(),
