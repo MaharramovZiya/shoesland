@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shoesland/logic/blocs/bloc/onboarding_bloc.dart';
+import 'package:shoesland/logic/blocs/onboarding_bloc/onboarding_bloc.dart';
 import 'package:shoesland/presentation/screens/onboarding/widgets/onboard_pageview_widget.dart';
 import 'package:shoesland/presentation/screens/onboarding/widgets/page_indicator_widget.dart';
 

@@ -119,12 +119,12 @@ Widget _buildNavigateToMenu() {
 Widget _buildProductDesign(BuildContext context) {
   return Column(
     children: [
-      SectionHeader(onSeeAllPressed: () {}, title: "Popular Shoes"),
+      SectionHeader(onSeeAllPressed: () {}, title: LocalStrings().popularShoes),
       _buildPopularSection(context),
       const SizedBox(
         height: 25,
       ),
-      SectionHeader(onSeeAllPressed: () {}, title: "New Arrivals "),
+      SectionHeader(onSeeAllPressed: () {}, title: LocalStrings().newArrivals),
       _buildArrivalSection(context)
     ],
   );

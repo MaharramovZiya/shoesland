@@ -50,6 +50,8 @@ class LocalStrings {
 
   final String storeLocation = "Store Location";
   final String location = "Baku, Azerbaijan";
+  final String popularShoes = "Popular shoes";
+  final String newArrivals = "New Arrivals";
 
   //search txt
 
@@ -78,4 +80,8 @@ class LocalStrings {
 
   //detail page - completed texts
   final String addedShoe = "Shoe added to cart!";
+
+  //My checkout page
+
+  final String myCart = "My cart";
 }
