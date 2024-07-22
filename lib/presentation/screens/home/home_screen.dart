@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
 import 'package:shoesland/data/models/category_model.dart';
 import 'package:shoesland/data/models/product_model.dart';
 import 'package:shoesland/logic/cubits/select_category.dart';
+import 'package:shoesland/presentation/routes/routes.dart';
 import 'package:shoesland/presentation/screens/details/detail_page.dart';
 import 'package:shoesland/presentation/screens/home/widgets/arrival_widget.dart';
 import 'package:shoesland/presentation/screens/home/widgets/navigate_top_menu.dart';
@@ -107,7 +109,9 @@ Widget _buildNavigateToMenu() {
     title: LocalStrings().location,
     customWidget: Text(LocalStrings().storeLocation),
     trallingIcon: Icons.shopping_bag_outlined,
-    trallingOnPressed: () {},
+    trallingOnPressed: () {
+      Get.toNamed(Routes.checkout);
+    },
   );
 }
 

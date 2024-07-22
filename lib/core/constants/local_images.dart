@@ -19,7 +19,7 @@ class LocalImages {
   static const String shoes_img5 = 'assets/images/s_img5.png';
   static const String shoes_img6 = 'assets/images/s_img6.png';
   static const String shoes_img7 = 'assets/images/s_img7.png';
-  
+
   //Shoe logos
 
   static const String l_0 = 'assets/images/l_0.png';
@@ -28,4 +28,8 @@ class LocalImages {
   static const String l_3 = 'assets/images/l_3.png';
   static const String l_4 = 'assets/images/l_4.png';
   static const String l_5 = 'assets/images/l_5.png';
+
+  //Animation asset from lottie packet
+
+  static const completedOrder = 'assets/lottie/completed.json';
 }

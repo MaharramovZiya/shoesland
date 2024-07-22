@@ -63,6 +63,8 @@ class LocalStrings {
 
   //detail page
 
+  final String detailPageTitle = "Men's shoe";
+
   final String gallery = "Gallery";
   final String size = "Size";
 
@@ -73,4 +75,7 @@ class LocalStrings {
   final String uk = "UK";
 
   final String price = 'Price';
+
+  //detail page - completed texts
+  final String addedShoe = "Shoe added to cart!";
 }
