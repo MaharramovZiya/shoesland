@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoesland/data/models/onboard_model.dart';
-import 'package:shoesland/logic/blocs/bloc/onboarding_bloc.dart';
+import 'package:shoesland/logic/blocs/onboarding_bloc/onboarding_bloc.dart';
 import 'package:shoesland/presentation/screens/onboarding/widgets/onboard_background_image_widget.dart';
 import 'package:shoesland/presentation/screens/onboarding/widgets/onboard_bg_text_widget.dart';
 import 'package:shoesland/presentation/screens/onboarding/widgets/onboard_dot_widget.dart';

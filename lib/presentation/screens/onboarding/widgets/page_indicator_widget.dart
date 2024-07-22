@@ -5,7 +5,7 @@ import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/data/models/onboard_model.dart';
-import 'package:shoesland/logic/blocs/bloc/onboarding_bloc.dart';
+import 'package:shoesland/logic/blocs/onboarding_bloc/onboarding_bloc.dart';
 import 'package:shoesland/presentation/routes/routes.dart';
 import 'package:shoesland/presentation/widgets/custom_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

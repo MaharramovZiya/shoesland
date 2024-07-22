@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:shoesland/core/constants/custom_size.dart';
+import 'package:shoesland/core/constants/local_images.dart';
+import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
 import 'package:shoesland/data/models/product_model.dart';
+import 'package:shoesland/logic/blocs/bloc/cart_bloc.dart';
 import 'package:shoesland/presentation/routes/routes.dart';
 import 'package:shoesland/presentation/screens/home/widgets/navigate_top_menu.dart';
+import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 class CheckoutScreen extends StatelessWidget {
-  const CheckoutScreen({Key? key}) : super(key: key);
+  const CheckoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +20,16 @@ class CheckoutScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: AppPadding.pageWithPadding,
-          child: SingleChildScrollView(child: _buildUI()),
+          child: SingleChildScrollView(child: _buildUI(context)),
         ),
       ),
     );
   }
 }
 
-Widget _buildUI() {
+Widget _buildUI(BuildContext context) {
+  CustomSize size = CustomSize(context);
   return Column(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       //top menu
@@ -31,7 +37,120 @@ Widget _buildUI() {
 
       //shoes list
 
-      _buildCallingShoes()
+      // _buildCallingShoes()
+      Container(
+        width: size.width,
+        height: 100,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              //Cart image left
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  width: 80,
+                  height: size.height,
+                  decoration: const BoxDecoration(
+                      color: Colors.white,
+                      image: DecorationImage(
+                          image: AssetImage(LocalImages.shoes_img0))),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              //Shoes description right
+              Expanded(
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          //Shoe title
+                          GeneralTextWidget("Nike Club Max",
+                              textStyle: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold)),
+
+                          //Shoe price
+                          GeneralTextWidget("\$64.43",
+                              textStyle: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold)),
+                          //Shoe counter
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  width: 24,
+                                  height: 24,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      image: const DecorationImage(
+                                          image: AssetImage(LocalImages.minus)),
+                                      borderRadius: BorderRadius.circular(20)),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              GeneralTextWidget("1",
+                                  textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold)),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  width: 24,
+                                  height: 24,
+                                  decoration: BoxDecoration(
+                                      image: const DecorationImage(
+                                          image: AssetImage(LocalImages.plus)),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20)),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                      //Size and delete
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(Icons.label),
+                          Icon(Icons.delete_outline_outlined)
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      )
     ],
   );
 }
@@ -48,22 +167,32 @@ Widget _buildNavigateTopMenu() {
       leadingOnPressed: () {
         Get.back();
       },
-      title: "My Cart");
+      title: LocalStrings().myCart);
 }
 
 //Calling shoes
 
 Widget _buildCallingShoes() {
-  return ListView.builder(
-    shrinkWrap: true,
-    primary: false,
-    itemCount: productList.length,
-    itemBuilder: (context, index) {
-      final product = productList[index];
-      return ListTile(
-        leading: Image(image: AssetImage(product.imagePath)),
-        title: Text(product.tag),
-        subtitle: Text(product.price.toString()),
+  return BlocBuilder<CartBloc, CartState>(
+    builder: (context, state) {
+      if (state is CartUpdated) {
+        final cartItems = state.cartItems;
+        return ListView.builder(
+          shrinkWrap: true,
+          primary: false,
+          itemCount: cartItems.length,
+          itemBuilder: (context, index) {
+            final cartItem = cartItems[index];
+            return ListTile(
+              leading: Image(image: AssetImage(cartItem.imagePath)),
+              title: Text(cartItem.tag),
+              subtitle: Text(cartItem.price.toString()),
+            );
+          },
+        );
+      }
+      return const Center(
+        child: Text("Sebet bos!"),
       );
     },
   );

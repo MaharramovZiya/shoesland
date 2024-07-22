@@ -9,6 +9,7 @@ import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
 import 'package:shoesland/data/models/product_model.dart';
 import 'package:shoesland/data/models/shoe_size_model.dart';
+import 'package:shoesland/logic/blocs/bloc/cart_bloc.dart';
 import 'package:shoesland/logic/cubits/select_shoe_size.dart';
 import 'package:shoesland/presentation/routes/routes.dart';
 import 'package:shoesland/presentation/screens/home/widgets/navigate_top_menu.dart';
@@ -152,9 +153,8 @@ Widget _buildAddToCartWidget(BuildContext context, Product product) {
                     child: Center(
                         child: Column(
                       children: [
-                        Lottie.asset(LocalImages.completedOrder,
-                            width: 130),
-                         Text(
+                        Lottie.asset(LocalImages.completedOrder, width: 130),
+                        Text(
                           LocalStrings().addedShoe,
                           style: const TextStyle(
                               color: Colors.black,
@@ -209,6 +209,7 @@ Widget _buildAddToCartWidget(BuildContext context, Product product) {
           child: CustomButton(
             text: LocalStrings().addToCart,
             onPressed: () {
+              context.read<CartBloc>().add(AddToCartEvent(product));
               showAddToCartDialog(context);
             },
           ),
@@ -237,7 +238,7 @@ Widget _buildRealtedShoesWidget(Product product) {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DetailScreen(product: product),
+                    builder: (context) => DetailScreen(product: relatedProduct),
                   ));
             },
             child: Container(
