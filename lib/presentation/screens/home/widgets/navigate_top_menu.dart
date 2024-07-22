@@ -37,10 +37,11 @@ class NavigateTopMenu extends StatelessWidget {
             if (customWidget != null) customWidget!,
             Row(
               children: [
-                const Icon(
-                  Icons.location_on,
-                  color: Colors.orange,
-                ),
+                if (customWidget != null)
+                  const Icon(
+                    Icons.location_on,
+                    color: Colors.orange,
+                  ),
                 Text(
                   title,
                   style: const TextStyle(
@@ -53,14 +54,15 @@ class NavigateTopMenu extends StatelessWidget {
           ],
         ),
 
-        ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: Container(
-            color: Colours.white,
-            child: IconButton(
-                onPressed: trallingOnPressed, icon: Icon(trallingIcon)),
+        if (trallingOnPressed != null)
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Container(
+              color: Colours.white,
+              child: IconButton(
+                  onPressed: trallingOnPressed, icon: Icon(trallingIcon)),
+            ),
           ),
-        ),
       ],
     );
   }

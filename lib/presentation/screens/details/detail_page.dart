@@ -4,11 +4,13 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
+import 'package:shoesland/core/constants/local_images.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
 import 'package:shoesland/data/models/product_model.dart';
 import 'package:shoesland/data/models/shoe_size_model.dart';
 import 'package:shoesland/logic/cubits/select_shoe_size.dart';
+import 'package:shoesland/presentation/routes/routes.dart';
 import 'package:shoesland/presentation/screens/home/widgets/navigate_top_menu.dart';
 import 'package:shoesland/presentation/widgets/custom_button.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
@@ -29,12 +31,14 @@ class DetailScreen extends StatelessWidget {
               padding: AppPadding.pageWithPadding,
               child: NavigateTopMenu(
                   trallingIcon: Icons.shopping_bag_outlined,
-                  trallingOnPressed: () {},
+                  trallingOnPressed: () {
+                    Get.toNamed(Routes.checkout);
+                  },
                   leadingIcon: Icons.arrow_back_ios_new_outlined,
                   leadingOnPressed: () {
                     Get.back();
                   },
-                  title: "Men's Shoes"),
+                  title: LocalStrings().detailPageTitle),
             ),
             Padding(
                 padding: AppPadding.pageWithPadding,
@@ -148,11 +152,11 @@ Widget _buildAddToCartWidget(BuildContext context, Product product) {
                     child: Center(
                         child: Column(
                       children: [
-                        Lottie.asset('assets/lottie/completed.json',
+                        Lottie.asset(LocalImages.completedOrder,
                             width: 130),
-                        const Text(
-                          "Shoe added to cart!",
-                          style: TextStyle(
+                         Text(
+                          LocalStrings().addedShoe,
+                          style: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 18),
