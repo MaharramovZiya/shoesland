@@ -51,6 +51,8 @@ class Routes {
     GetPage(name: notifications, page: () => const NotificationScreen()),
     GetPage(name: profile, page: () => const ProfileScreen()),
 
+  
+
     //checkout
 
     GetPage(name: checkout, page: () => const CheckoutScreen()),

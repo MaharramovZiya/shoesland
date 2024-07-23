@@ -2,57 +2,66 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shoesland/core/components/active_button.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
 import 'package:shoesland/core/constants/local_images.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
 import 'package:shoesland/data/models/product_model.dart';
-import 'package:shoesland/data/models/shoe_size_model.dart';
 import 'package:shoesland/logic/blocs/bloc/cart_bloc.dart';
-import 'package:shoesland/logic/cubits/select_shoe_size.dart';
 import 'package:shoesland/presentation/routes/routes.dart';
 import 'package:shoesland/presentation/screens/home/widgets/navigate_top_menu.dart';
 import 'package:shoesland/presentation/widgets/custom_button.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends StatefulWidget {
   DetailScreen({super.key, required this.product});
 
   Product product;
 
   @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> with CustomDetailMixin {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: AppPadding.pageWithPadding,
-              child: NavigateTopMenu(
-                  trallingIcon: Icons.shopping_bag_outlined,
-                  trallingOnPressed: () {
-                    Get.toNamed(Routes.checkout);
-                  },
-                  leadingIcon: Icons.arrow_back_ios_new_outlined,
-                  leadingOnPressed: () {
-                    Get.back();
-                  },
-                  title: LocalStrings().detailPageTitle),
-            ),
-            Padding(
+        child: Form(
+          onChanged: onChange,
+          key: customKey,
+          child: Column(
+            children: [
+              Padding(
                 padding: AppPadding.pageWithPadding,
-                child: Image.asset(product.imagePath)),
-            _buildDescriptionWidget(context, product),
-          ],
+                child: NavigateTopMenu(
+                    trallingIcon: Icons.shopping_bag_outlined,
+                    trallingOnPressed: () {
+                      Get.toNamed(Routes.checkout);
+                    },
+                    leadingIcon: Icons.arrow_back_ios_new_outlined,
+                    leadingOnPressed: () {
+                      Get.back();
+                    },
+                    title: LocalStrings().detailPageTitle),
+              ),
+              Padding(
+                  padding: AppPadding.pageWithPadding,
+                  child: Image.asset(widget.product.imagePath)),
+              _buildDescriptionWidget(context, widget.product, valueNotifier),
+            ],
+          ),
         ),
       )),
     );
   }
 }
 
-Widget _buildDescriptionWidget(BuildContext context, Product product) {
+Widget _buildDescriptionWidget(
+    BuildContext context, Product product, ValueNotifier valueNotifier) {
   return ClipRRect(
     borderRadius: const BorderRadius.only(
         topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)),
@@ -100,7 +109,6 @@ Widget _buildDescriptionWidget(BuildContext context, Product product) {
           const SizedBox(
             height: 10,
           ),
-
           //recommended shoes
           _buildRealtedShoesWidget(product),
           const SizedBox(height: 8),
@@ -115,7 +123,7 @@ Widget _buildDescriptionWidget(BuildContext context, Product product) {
           const SizedBox(
             height: 20,
           ),
-          _buildAddToCartWidget(context, product)
+          _buildAddToCartWidget(context, product, valueNotifier)
         ],
       ),
     ),
@@ -123,7 +131,8 @@ Widget _buildDescriptionWidget(BuildContext context, Product product) {
 }
 
 //Button add to cart
-Widget _buildAddToCartWidget(BuildContext context, Product product) {
+Widget _buildAddToCartWidget(
+    BuildContext context, Product product, ValueNotifier valueNotifier) {
   //added to cart
   void showAddToCartDialog(BuildContext context) => showDialog(
         context: context,
@@ -206,11 +215,17 @@ Widget _buildAddToCartWidget(BuildContext context, Product product) {
         ),
         SizedBox(
           width: CustomSize(context).width / 2,
-          child: CustomButton(
-            text: LocalStrings().addToCart,
-            onPressed: () {
-              context.read<CartBloc>().add(AddToCartEvent(product));
-              showAddToCartDialog(context);
+          child: ValueListenableBuilder(
+            valueListenable: valueNotifier,
+            builder: (context, value, child) {
+              return CustomButton(
+                  text: LocalStrings().addToCart,
+                  onPressed: !value
+                      ? null
+                      : () {
+                          context.read<CartBloc>().add(AddToCartEvent(product));
+                          showAddToCartDialog(context);
+                        });
             },
           ),
         ),
@@ -298,59 +313,5 @@ Widget _buildSizeTitleWidget() {
 
 //User will be select shoe size
 Widget _buildShoeSizeWidget() {
-  return BlocProvider(
-    create: (context) => ShoeSizeCubit(),
-    child: BlocBuilder<ShoeSizeCubit, List<ShoeSizeModel>>(
-      builder: (context, shoeList) {
-        return SizedBox(
-          height: 70,
-          // width: 70,
-          child: ListView.builder(
-            itemCount: shoeList.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              final shoeSizeIndex = shoeList[index];
-              return GestureDetector(
-                onTap: () {
-                  context.read<ShoeSizeCubit>().toggleSelectSize(index);
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          shoeSizeIndex.isSelected
-                              ? BoxShadow(
-                                  color:
-                                      const Color(0xFF5B9EE1).withOpacity(0.5),
-                                  spreadRadius: 3,
-                                  blurRadius: 7,
-                                  offset: const Offset(0, 3),
-                                )
-                              : const BoxShadow(),
-                        ],
-                        color: shoeSizeIndex.isSelected
-                            ? Colours.blueColor
-                            : Colours.white,
-                        borderRadius: BorderRadius.circular(40)),
-                    child: Center(
-                        child: Text(
-                      shoeSizeIndex.size,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: shoeSizeIndex.isSelected
-                              ? Colors.white
-                              : Colors.black),
-                    )),
-                  ),
-                ),
-              );
-            },
-          ),
-        );
-      },
-    ),
-  );
+  return ShoeSelectSizeWidget();
 }
