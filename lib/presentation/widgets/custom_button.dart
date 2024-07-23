@@ -4,7 +4,7 @@ import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Color? color;
   final TextStyle? textStyle;
   final EdgeInsetsGeometry? padding;

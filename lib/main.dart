@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/logic/blocs/bloc/cart_bloc.dart';
+import 'package:shoesland/logic/cubits/shoe_counter.dart';
 import 'package:shoesland/presentation/routes/routes.dart';
 
 // void main() {
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
           BlocProvider<CartBloc>(
             create: (context) => CartBloc(),
           ),
+          BlocProvider<ShoeCounterCubit>(
+            create: (context) => ShoeCounterCubit(),
+          ),
         ],
         child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
@@ -37,7 +41,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colours.backgroundColor,
             ),
           ),
-          initialRoute: Routes.checkout,
+          initialRoute: Routes.home,
           getPages: Routes.getPages,
         ));
   }
