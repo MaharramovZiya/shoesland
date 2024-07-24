@@ -84,4 +84,5 @@ class LocalStrings {
   //My checkout page
 
   final String myCart = "My cart";
+  final String emptyCart = 'You have not added any products to the cart yet.';
 }

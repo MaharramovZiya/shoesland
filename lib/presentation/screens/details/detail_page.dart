@@ -50,7 +50,10 @@ class _DetailScreenState extends State<DetailScreen> with CustomDetailMixin {
               ),
               Padding(
                   padding: AppPadding.pageWithPadding,
-                  child: Image.asset(widget.product.imagePath)),
+                  child: Transform.rotate(
+                                 angle: -10 * 3.1415926535 / 90,
+
+                    child: Image.asset(widget.product.imagePath))),
               _buildDescriptionWidget(context, widget.product, valueNotifier),
             ],
           ),
