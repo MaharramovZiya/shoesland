@@ -2,26 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
-import 'package:shoesland/data/models/product_model.dart';
+import 'package:shoesland/data/models/cart_item_model.dart';
 import 'package:shoesland/logic/blocs/bloc/cart_bloc.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 class CheckOutProductCart extends StatelessWidget {
   const CheckOutProductCart({
     super.key,
-    required this.size,
     required this.cartItem,
   });
 
-  final CustomSize size;
-  final Product cartItem;
+  final CartItem cartItem;
 
   @override
   Widget build(BuildContext context) {
+    CustomSize size = CustomSize(context);
     return Container(
       width: size.width,
       padding: const EdgeInsets.all(10),
-      height: 140,
+      height: 130,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,7 +37,8 @@ class CheckOutProductCart extends StatelessWidget {
                 ),
                 child: Transform.rotate(
                     angle: -5 * 3.1415926535 / 90,
-                    child: Image(image: AssetImage(cartItem.imagePath))),
+                    child:
+                        Image(image: AssetImage(cartItem.product.imagePath))),
               ),
               const SizedBox(
                 width: 10,
@@ -47,22 +47,26 @@ class CheckOutProductCart extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GeneralTextWidget(
-                    cartItem.name,
-                    textStyle:
-                        const TextStyle(fontWeight: FontWeight.w600, fontSize: 19),
+                    cartItem.product.name,
+                    textStyle: const TextStyle(
+                        fontWeight: FontWeight.w600, fontSize: 19),
                   ),
                   GeneralTextWidget(
-                    '\$${cartItem.price}',
-                    textStyle:
-                        const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+                    '\$${cartItem.product.price}',
+                    textStyle: const TextStyle(
+                        fontWeight: FontWeight.w600, fontSize: 15),
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 15,
                   ),
                   Row(
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context
+                              .read<CartBloc>()
+                              .add(DecreaseQuantityEvent(cartItem.product));
+                        },
                         child: Container(
                           padding: const EdgeInsets.only(left: 8, right: 8),
                           decoration: BoxDecoration(
@@ -77,15 +81,19 @@ class CheckOutProductCart extends StatelessWidget {
                       const SizedBox(
                         width: 11,
                       ),
-                      GeneralTextWidget("1",
+                      GeneralTextWidget(cartItem.quantity.toString(),
                           textStyle: const TextStyle(fontSize: 16)),
                       const SizedBox(
                         width: 11,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context
+                              .read<CartBloc>()
+                              .add(IncreaseQuantityEvent(cartItem.product));
+                        },
                         child: Container(
-                          padding: const EdgeInsets.only(left: 8, right: 8),
+                          padding: const EdgeInsets.only(left: 10, right: 10),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: Colours.blueColor),
@@ -105,13 +113,17 @@ class CheckOutProductCart extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "40",
-                style: TextStyle(fontWeight: FontWeight.bold),
+              Text(
+                "\$${(cartItem.product.price * cartItem.quantity).toStringAsFixed(2)}",
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               IconButton(
+                  style: const ButtonStyle(
+                      foregroundColor: WidgetStatePropertyAll(Colors.red)),
                   onPressed: () {
-                    context.read<CartBloc>().add(RemoveFromCartEvent(cartItem));
+                    context
+                        .read<CartBloc>()
+                        .add(RemoveFromCartEvent(cartItem.product));
                   },
                   icon: const Icon(
                     Icons.delete_outline_outlined,

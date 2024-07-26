@@ -40,7 +40,7 @@ class _DetailScreenState extends State<DetailScreen> with CustomDetailMixin {
                 child: NavigateTopMenu(
                     trallingIcon: Icons.shopping_bag_outlined,
                     trallingOnPressed: () {
-                      Get.toNamed(Routes.checkout);
+                      Get.toNamed(Routes.cart);
                     },
                     leadingIcon: Icons.arrow_back_ios_new_outlined,
                     leadingOnPressed: () {

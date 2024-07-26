@@ -85,4 +85,24 @@ class LocalStrings {
 
   final String myCart = "My cart";
   final String emptyCart = 'You have not added any products to the cart yet.';
+  final String checkShop = "Shopping";
+  final String valueZero = "00.00";
+  final String subTotal = "Subtotal";
+  final String totalCost = "Total Cost";
+  final String checkOut = "Checkout";
+
+  final String paymentTxt = "Payment";
+  final String paymentSuccess = "Your Payment Is Successful";
+
+  //Checkout with payment page. In the here information cart texts
+
+  final String paymentMethod = 'Payment Method';
+  final String paypalCard = "Paypal Card";
+  final String paypalCode = '**** **** 0629 4626';
+  final String addressShop = '25e 8 Noyabr Prospekti, Bakı 1025';
+  final String address = 'Address';
+  final String phone = 'Phone';
+  final String phoneNum = "+9940109428527";
+  final String emailTxtExample = 'worker12@hotmail.com';
+  final String contactInfo = "Contact Information";
 }

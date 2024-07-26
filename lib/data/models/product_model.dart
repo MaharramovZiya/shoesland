@@ -17,7 +17,6 @@ class Product {
     required this.name,
     required this.price,
     required this.imagePath,
-     
   });
 }
 
@@ -35,7 +34,7 @@ List<Product> productList = [
       id: '2',
       tag: "BEST SELLER",
       name: "Nike Air Max",
-      price: 849.69,
+      price: 506.40,
       imagePath: LocalImages.shoes_img1,
       categoryTag: "Nike",
       description:
@@ -44,7 +43,7 @@ List<Product> productList = [
       id: '3',
       tag: "BEST CHOICE",
       name: "Nike Air Jordan",
-      price: 849.69,
+      price: 270.54,
       imagePath: LocalImages.shoes_img2,
       categoryTag: "Nike",
       description:
