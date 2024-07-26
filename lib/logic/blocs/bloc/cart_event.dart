@@ -23,3 +23,21 @@ class RemoveFromCartEvent extends CartEvent {
   @override
   List<Object> get props => [product];
 }
+
+class IncreaseQuantityEvent extends CartEvent {
+  final Product product;
+
+  const IncreaseQuantityEvent(this.product);
+
+  @override
+  List<Object> get props => [product];
+}
+
+class DecreaseQuantityEvent extends CartEvent {
+  final Product product;
+
+  const DecreaseQuantityEvent(this.product);
+
+  @override
+  List<Object> get props => [product];
+}

@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:shoesland/presentation/screens/auth/login/login_screen.dart';
 import 'package:shoesland/presentation/screens/auth/recovery_password/recovery_screen.dart';
 import 'package:shoesland/presentation/screens/auth/register/register_screen.dart';
+import 'package:shoesland/presentation/screens/cart/checkout/checkout_screen.dart';
 import 'package:shoesland/presentation/screens/cart/cart_screen.dart';
-import 'package:shoesland/presentation/screens/checkout/checkout_screen.dart';
 import 'package:shoesland/presentation/screens/favorites/favorites_screen.dart';
 import 'package:shoesland/presentation/screens/home/home_screen.dart';
 import 'package:shoesland/presentation/screens/notifications/notification_screen.dart';
@@ -30,6 +30,7 @@ class Routes {
   static const String bestSeller = '/best-seller';
   static const String checkout = '/checkout';
   static const String accountSettings = '/account-setting';
+  static const String cart = '/cart';
 
   // Detail page
   static const String detail = '/detail';
@@ -51,11 +52,13 @@ class Routes {
     GetPage(name: notifications, page: () => const NotificationScreen()),
     GetPage(name: profile, page: () => const ProfileScreen()),
 
-  
-
     //checkout
 
     GetPage(name: checkout, page: () => const CheckoutScreen()),
+
+    //cart 
+    GetPage(name: cart, page: () => const CartScreen()),
+    
     // ignore: prefer_const_constructors
     // GetPage(name: detail, page: () =>  DetailPage(product: productList.first,)),
 

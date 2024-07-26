@@ -32,8 +32,16 @@ class LocalImages {
   //Animation asset from lottie packet
 
   static const completedOrder = 'assets/lottie/completed.json';
+  static const soldLottie = 'assets/lottie/sold.json';
 
   //Minus and plus
   static const minus = 'assets/images/minus.png';
   static const plus = 'assets/images/plus.png';
+
+  //location store
+
+  static const location_store = 'assets/images/location_store.png';
+
+  //paypal
+  static const paypal = 'assets/images/paypal.png';
 }

@@ -6,65 +6,44 @@ import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
 import 'package:shoesland/logic/blocs/bloc/cart_bloc.dart';
 import 'package:shoesland/presentation/routes/routes.dart';
+import 'package:shoesland/presentation/screens/cart/checkout/widgets/dialog_widget.dart';
+import 'package:shoesland/presentation/screens/cart/checkout/widgets/payment_info_widget.dart';
 import 'package:shoesland/presentation/screens/cart/widgets/custom_float_action_btn.dart';
-import 'package:shoesland/presentation/screens/cart/widgets/lists_card_widget.dart';
 import 'package:shoesland/presentation/screens/cart/widgets/total_value_widget.dart';
 import 'package:shoesland/presentation/screens/home/widgets/navigate_top_menu.dart';
 
-class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+class CheckoutScreen extends StatelessWidget {
+  const CheckoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: CustomFloatActionButton(
-        onPressed: () {
-          _showModalBottomSheet(context);
-        },
-        icon: Icons.shopping_bag_outlined,
-      ),
-      body: SafeArea(
-        child: Padding(
+        floatingActionButton: CustomFloatActionButton(
+            onPressed: () {
+              _showModalBottomSheet(context);
+            },
+            icon: Icons.payment_rounded),
+        body: SafeArea(
+            child: Padding(
           padding: AppPadding.pageWithPadding,
-          child: SingleChildScrollView(child: _buildUI(context)),
-        ),
-      ),
-    );
+          child: SingleChildScrollView(
+            child: _buildUI(context),
+          ),
+        )));
   }
 }
 
 Widget _buildUI(BuildContext context) {
+  CustomSize customSize = CustomSize(context);
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      //top menu
       _buildNavigateTopMenu(),
-
-      //shoes list
-
-      _buildCallingShoes(context),
+      const SizedBox(
+        height: 29,
+      ),
+      CheckoutPaymentInformationWidget(customSize: customSize)
     ],
-  );
-}
-
-BlocBuilder<CartBloc, CartState> _buildTotalValue() {
-  return BlocBuilder<CartBloc, CartState>(
-    builder: (context, state) {
-      if (state is CartUpdated) {
-        final total = state.cartItems.fold<double>(
-          0,
-          (sum, item) => sum + (item.product.price * item.quantity),
-        );
-
-        return TotalValueCartWidget(
-          text: LocalStrings().checkOut,
-            onPressed: () {
-              Get.toNamed(Routes.checkout);
-            },
-            total: total);
-      }
-      return const Center(child: CircularProgressIndicator());
-    },
   );
 }
 
@@ -80,15 +59,36 @@ Widget _buildNavigateTopMenu() {
       leadingOnPressed: () {
         Get.back();
       },
-      title: LocalStrings().myCart);
+      title: LocalStrings().checkOut);
 }
 
-//Calling shoes
+BlocBuilder<CartBloc, CartState> _buildTotalValue() {
+  void showAddToCartDialog(BuildContext context) => showDialog(
+        context: context,
+        builder: (context) {
+          return const CheckoutDialogWidget();
+        },
+      );
+  return BlocBuilder<CartBloc, CartState>(
+    builder: (context, state) {
+      if (state is CartUpdated) {
+        final total = state.cartItems.fold<double>(
+          0,
+          (sum, item) => sum + (item.product.price * item.quantity),
+        );
 
-Widget _buildCallingShoes(context) {
-  final CustomSize size = CustomSize(context);
-  return ListCardsWidget(size: size);
+        return TotalValueCartWidget(
+            text: LocalStrings().paymentTxt,
+            onPressed: () {
+              showAddToCartDialog(context);
+            },
+            total: total);
+      }
+      return const Center(child: CircularProgressIndicator());
+    },
+  );
 }
+
 
 void _showModalBottomSheet(BuildContext context) {
   showModalBottomSheet(
