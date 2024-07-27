@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:shoesland/core/components/active_button.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
-import 'package:shoesland/core/constants/local_images.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
 import 'package:shoesland/data/models/product_model.dart';
 import 'package:shoesland/logic/blocs/bloc/cart_bloc.dart';
-import 'package:shoesland/presentation/routes/routes.dart';
-import 'package:shoesland/presentation/screens/home/widgets/navigate_top_menu.dart';
+import 'package:shoesland/presentation/screens/components/navigate_top_menu_tree.dart';
+import 'package:shoesland/presentation/screens/components/show_add_dialog_global.dart';
+import 'package:shoesland/presentation/screens/details/widgets/addto_cart_widget.dart';
+import 'package:shoesland/presentation/screens/details/widgets/realted_show_widget.dart';
+import 'package:shoesland/presentation/screens/details/widgets/static_detail_size_widget.dart';
 import 'package:shoesland/presentation/widgets/custom_button.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
@@ -35,25 +35,12 @@ class _DetailScreenState extends State<DetailScreen> with CustomDetailMixin {
           key: customKey,
           child: Column(
             children: [
-              Padding(
-                padding: AppPadding.pageWithPadding,
-                child: NavigateTopMenu(
-                    trallingIcon: Icons.shopping_bag_outlined,
-                    trallingOnPressed: () {
-                      Get.toNamed(Routes.cart);
-                    },
-                    leadingIcon: Icons.arrow_back_ios_new_outlined,
-                    leadingOnPressed: () {
-                      Get.back();
-                    },
-                    title: LocalStrings().detailPageTitle),
-              ),
+              buildDetailScreenNavigateTopMenu(),
               Padding(
                   padding: AppPadding.pageWithPadding,
                   child: Transform.rotate(
-                                 angle: -10 * 3.1415926535 / 90,
-
-                    child: Image.asset(widget.product.imagePath))),
+                      angle: -10 * 3.1415926535 / 90,
+                      child: Image.asset(widget.product.imagePath))),
               _buildDescriptionWidget(context, widget.product, valueNotifier),
             ],
           ),
@@ -136,51 +123,6 @@ Widget _buildDescriptionWidget(
 //Button add to cart
 Widget _buildAddToCartWidget(
     BuildContext context, Product product, ValueNotifier valueNotifier) {
-  //added to cart
-  void showAddToCartDialog(BuildContext context) => showDialog(
-        context: context,
-        builder: (context) {
-          return Dialog(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned(
-                      right: 10,
-                      top: 10,
-                      child: IconButton(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          icon: const Icon(
-                            Icons.clear_rounded,
-                            color: Colors.black,
-                          ))),
-                  Container(
-                    width: 180,
-                    height: 180,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                        child: Column(
-                      children: [
-                        Lottie.asset(LocalImages.completedOrder, width: 130),
-                        Text(
-                          LocalStrings().addedShoe,
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
-                        ),
-                      ],
-                    )),
-                  ),
-                ],
-              ));
-        },
-      );
-
   return Container(
     width: CustomSize(context).width,
     decoration: const BoxDecoration(
@@ -227,7 +169,8 @@ Widget _buildAddToCartWidget(
                       ? null
                       : () {
                           context.read<CartBloc>().add(AddToCartEvent(product));
-                          showAddToCartDialog(context);
+                          showCustomAddToCartDialog(
+                              context, const AddToCartDialogWidget());
                         });
             },
           ),
@@ -237,81 +180,18 @@ Widget _buildAddToCartWidget(
   );
 }
 
+//Realted shoes
 Widget _buildRealtedShoesWidget(Product product) {
   List<Product> filteredProducts = productList
       .where((prod) => prod.categoryTag == product.categoryTag)
       .toList();
-  return SizedBox(
-    height: 60,
-    child: ListView.separated(
-        separatorBuilder: (context, index) => const SizedBox(width: 10),
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: filteredProducts.length,
-        itemBuilder: (context, index) {
-          Product relatedProduct = filteredProducts[index];
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailScreen(product: relatedProduct),
-                  ));
-            },
-            child: Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(relatedProduct.imagePath)),
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colours.backgroundColor),
-            ),
-          );
-        }),
-  );
+  return RealtedShoesWidget(filteredProducts: filteredProducts);
 }
 
 //Added shoes to cart card design
 
 Widget _buildSizeTitleWidget() {
-  return Row(
-    mainAxisSize: MainAxisSize.max,
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      GeneralTextWidget(
-        LocalStrings().size,
-        textStyle: const TextStyle(
-            color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
-      ),
-      Row(
-        children: [
-          GeneralTextWidget(
-            LocalStrings().eu,
-            textStyle: const TextStyle(
-                color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            width: 7,
-          ),
-          GeneralTextWidget(
-            LocalStrings().us,
-            textStyle: const TextStyle(
-                color: Colors.grey, fontSize: 14, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            width: 7,
-          ),
-          GeneralTextWidget(
-            LocalStrings().uk,
-            textStyle: const TextStyle(
-                color: Colors.grey, fontSize: 14, fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
-    ],
-  );
+  return const DetailSizeTitleWidget();
 }
 
 //User will be select shoe size

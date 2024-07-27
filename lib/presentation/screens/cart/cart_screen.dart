@@ -9,7 +9,7 @@ import 'package:shoesland/presentation/routes/routes.dart';
 import 'package:shoesland/presentation/screens/cart/widgets/custom_float_action_btn.dart';
 import 'package:shoesland/presentation/screens/cart/widgets/lists_card_widget.dart';
 import 'package:shoesland/presentation/screens/cart/widgets/total_value_widget.dart';
-import 'package:shoesland/presentation/screens/home/widgets/navigate_top_menu.dart';
+import 'package:shoesland/presentation/screens/components/navigate_top_menu_tree.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -38,7 +38,7 @@ Widget _buildUI(BuildContext context) {
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       //top menu
-      _buildNavigateTopMenu(),
+      buildCartScreenNavigateTopMenu(),
 
       //shoes list
 
@@ -66,21 +66,6 @@ BlocBuilder<CartBloc, CartState> _buildTotalValue() {
       return const Center(child: CircularProgressIndicator());
     },
   );
-}
-
-//Navigate top menu
-
-Widget _buildNavigateTopMenu() {
-  return NavigateTopMenu(
-      trallingIcon: Icons.favorite_border,
-      trallingOnPressed: () {
-        Get.toNamed(Routes.favourites);
-      },
-      leadingIcon: Icons.arrow_back_ios_new_rounded,
-      leadingOnPressed: () {
-        Get.back();
-      },
-      title: LocalStrings().myCart);
 }
 
 //Calling shoes

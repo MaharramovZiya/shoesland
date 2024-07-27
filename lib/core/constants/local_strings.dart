@@ -105,4 +105,8 @@ class LocalStrings {
   final String phoneNum = "+9940109428527";
   final String emailTxtExample = 'worker12@hotmail.com';
   final String contactInfo = "Contact Information";
+
+  //Notification Screen texts
+
+  final String notifacationTitle = 'Notifications';
 }

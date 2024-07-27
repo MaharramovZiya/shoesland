@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:shoesland/presentation/screens/auth/login/login_screen.dart';
 import 'package:shoesland/presentation/screens/auth/recovery_password/recovery_screen.dart';
 import 'package:shoesland/presentation/screens/auth/register/register_screen.dart';
-import 'package:shoesland/presentation/screens/cart/checkout/checkout_screen.dart';
+import 'package:shoesland/presentation/screens/checkout/checkout_screen.dart';
 import 'package:shoesland/presentation/screens/cart/cart_screen.dart';
 import 'package:shoesland/presentation/screens/favorites/favorites_screen.dart';
 import 'package:shoesland/presentation/screens/home/home_screen.dart';
