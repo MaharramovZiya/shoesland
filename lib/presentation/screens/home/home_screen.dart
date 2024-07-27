@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
 import 'package:shoesland/data/models/category_model.dart';
 import 'package:shoesland/data/models/product_model.dart';
 import 'package:shoesland/logic/cubits/select_category.dart';
-import 'package:shoesland/presentation/routes/routes.dart';
+import 'package:shoesland/presentation/screens/components/navigate_top_menu_tree.dart';
 import 'package:shoesland/presentation/screens/details/detail_page.dart';
 import 'package:shoesland/presentation/screens/home/widgets/arrival_widget.dart';
-import 'package:shoesland/presentation/screens/home/widgets/navigate_top_menu.dart';
 import 'package:shoesland/presentation/screens/home/widgets/product_card.dart';
 import 'package:shoesland/presentation/screens/home/widgets/search_widget.dart';
 import 'package:shoesland/presentation/screens/home/widgets/section_header.dart';
@@ -34,7 +32,7 @@ Widget _buildUi(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _buildNavigateToMenu(),
+            buildHomeNavigateTopMenu(),
             const SizedBox(
               height: 20,
             ),
@@ -97,21 +95,6 @@ Widget _buildCategoryMenu() {
         );
       },
     ),
-  );
-}
-
-//Custom navigate to menu()
-
-Widget _buildNavigateToMenu() {
-  return NavigateTopMenu(
-    leadingIcon: Icons.window_outlined,
-    leadingOnPressed: () {},
-    title: LocalStrings().location,
-    customWidget: Text(LocalStrings().storeLocation),
-    trallingIcon: Icons.shopping_bag_outlined,
-    trallingOnPressed: () {
-      Get.toNamed(Routes.checkout);
-    },
   );
 }
 
