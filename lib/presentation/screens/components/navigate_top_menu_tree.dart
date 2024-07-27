@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
 import 'package:shoesland/presentation/routes/routes.dart';
 import 'package:shoesland/presentation/screens/home/widgets/navigate_top_menu.dart';
 import 'package:get/get.dart';
+import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 //I'm writing my NavigateTopMenu Widget here in list form, breaking it down into functions.
 
@@ -15,7 +17,7 @@ Widget buildHomeNavigateTopMenu() {
     leadingOnPressed: () {},
     title: LocalStrings().location,
     customWidget: Text(LocalStrings().storeLocation),
-    trallingIcon: Icons.shopping_bag_outlined,
+    trallingIcon: const Icon(Icons.shopping_bag_outlined),
     trallingOnPressed: () {
       Get.toNamed(Routes.checkout);
     },
@@ -28,11 +30,11 @@ Widget buildDetailScreenNavigateTopMenu() {
   return Padding(
     padding: AppPadding.pageWithPadding,
     child: NavigateTopMenu(
-        leadingIcon: Icons.shopping_bag_outlined,
+        leadingIcon: Icons.arrow_back_ios_new_rounded,
         leadingOnPressed: () {
-          Get.toNamed(Routes.cart);
+          Get.back();
         },
-        trallingIcon: Icons.shopping_bag_outlined,
+        trallingIcon: const Icon(Icons.shopping_bag_outlined),
         trallingOnPressed: () {
           Get.toNamed(Routes.cart);
         },
@@ -43,7 +45,7 @@ Widget buildDetailScreenNavigateTopMenu() {
 
 Widget buildCartScreenNavigateTopMenu() {
   return NavigateTopMenu(
-      trallingIcon: Icons.favorite_border,
+      trallingIcon: const Icon(Icons.favorite_border),
       trallingOnPressed: () {
         Get.toNamed(Routes.favourites);
       },
@@ -57,7 +59,7 @@ Widget buildCartScreenNavigateTopMenu() {
 
 Widget bulildCheckoutNavigateTopMenu() {
   return NavigateTopMenu(
-    trallingIcon: Icons.favorite_border,
+    trallingIcon: const Icon(Icons.favorite_border),
     trallingOnPressed: () {
       Get.toNamed(Routes.favourites);
     },
@@ -67,4 +69,18 @@ Widget bulildCheckoutNavigateTopMenu() {
     },
     title: LocalStrings().checkOut,
   );
+}
+
+//Notifaction screen
+
+Widget buildNotifactionNavigateTopMenu() {
+  return NavigateTopMenu(
+      leadingIcon: Icons.arrow_back_ios_new_rounded,
+      leadingOnPressed: () {
+        Get.back();
+      },
+      trallingOnPressed: () {},
+      trallingIcon: GeneralTextWidget(
+          textStyle: const TextStyle(color: Colours.blueColor), "Clear All"),
+      title: LocalStrings().notifacationTitle);
 }

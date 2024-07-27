@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/data/models/product_model.dart';
@@ -20,7 +19,6 @@ class RealtedShoesWidget extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(width: 10),
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          physics: const NeverScrollableScrollPhysics(),
           itemCount: filteredProducts.length,
           itemBuilder: (context, index) {
             Product relatedProduct = filteredProducts[index];
@@ -29,7 +27,8 @@ class RealtedShoesWidget extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DetailScreen(product: relatedProduct),
+                      builder: (context) =>
+                          DetailScreen(product: relatedProduct),
                     ));
               },
               child: Container(

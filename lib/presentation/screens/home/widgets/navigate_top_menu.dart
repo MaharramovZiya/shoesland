@@ -2,22 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:shoesland/core/constants/colours.dart';
 
 class NavigateTopMenu extends StatelessWidget {
-  const NavigateTopMenu(
-      {super.key,
-      this.trallingIcon,
-      required this.leadingIcon,
-      required this.leadingOnPressed,
-      this.trallingOnPressed,
-      required this.title,
-      this.customWidget});
+  const NavigateTopMenu({
+    super.key,
+    this.trallingIcon,
+    required this.leadingIcon,
+    required this.leadingOnPressed,
+    this.trallingOnPressed,
+    required this.title,
+    this.customWidget,
+  });
+
   final IconData leadingIcon;
-  final IconData? trallingIcon;
+  final Widget? trallingIcon;
   final VoidCallback leadingOnPressed;
   final VoidCallback? trallingOnPressed;
   final String title;
   final Widget? customWidget;
+
   @override
   Widget build(BuildContext context) {
+    bool isTextWidget = trallingIcon is Text;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -26,12 +31,11 @@ class NavigateTopMenu extends StatelessWidget {
           child: Container(
             color: Colours.white,
             child: IconButton(
-                onPressed: leadingOnPressed, icon: Icon(leadingIcon)),
+              onPressed: leadingOnPressed,
+              icon: Icon(leadingIcon),
+            ),
           ),
         ),
-
-        //Store location
-
         Column(
           children: [
             if (customWidget != null) customWidget!,
@@ -45,22 +49,24 @@ class NavigateTopMenu extends StatelessWidget {
                 Text(
                   title,
                   style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15),
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15,
+                  ),
                 ),
               ],
-            )
+            ),
           ],
         ),
-
         if (trallingOnPressed != null)
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Container(
-              color: Colours.white,
+              color: isTextWidget ? Colors.transparent : Colours.white,
               child: IconButton(
-                  onPressed: trallingOnPressed, icon: Icon(trallingIcon)),
+                onPressed: trallingOnPressed,
+                icon: trallingIcon ?? Container(),
+              ),
             ),
           ),
       ],
