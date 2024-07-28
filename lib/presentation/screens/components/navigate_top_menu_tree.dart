@@ -79,8 +79,21 @@ Widget buildNotifactionNavigateTopMenu(VoidCallback trallingOnPressed) {
       leadingOnPressed: () {
         Get.back();
       },
-      trallingOnPressed:trallingOnPressed,
+      trallingOnPressed: trallingOnPressed,
       trallingIcon: GeneralTextWidget(
           textStyle: const TextStyle(color: Colours.blueColor), "Clear All"),
       title: LocalStrings().notifacationTitle);
+}
+
+//Account settings screen navigate
+
+Widget buildAccountNavigateTopMenu() {
+  return NavigateTopMenu(
+      leadingIcon: Icons.arrow_back_ios_new_rounded,
+      leadingOnPressed: () {
+        Get.back();
+      },
+      trallingOnPressed: () {},
+      trallingIcon: const Text(""),
+      title: LocalStrings().accountTitle);
 }

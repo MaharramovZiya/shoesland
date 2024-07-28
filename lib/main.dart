@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           BlocProvider<ShoeCounterCubit>(
             create: (context) => ShoeCounterCubit(),
           ),
-            BlocProvider<NotificationProductCubit>(
+          BlocProvider<NotificationProductCubit>(
             create: (context) => NotificationProductCubit(),
           ),
         ],
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colours.backgroundColor,
             ),
           ),
-          initialRoute: Routes.notifications,
+          initialRoute: Routes.accountSettings,
           getPages: Routes.getPages,
         ));
   }
