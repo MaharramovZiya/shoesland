@@ -1,5 +1,6 @@
 //Routes with get x
 import 'package:get/get.dart';
+import 'package:shoesland/presentation/screens/account_settings/account_screen.dart';
 import 'package:shoesland/presentation/screens/auth/login/login_screen.dart';
 import 'package:shoesland/presentation/screens/auth/recovery_password/recovery_screen.dart';
 import 'package:shoesland/presentation/screens/auth/register/register_screen.dart';
@@ -52,13 +53,16 @@ class Routes {
     GetPage(name: notifications, page: () => const NotificationScreen()),
     GetPage(name: profile, page: () => const ProfileScreen()),
 
+    //Account settings
+    GetPage(name: accountSettings, page: () => const AccountScreen()),
+
     //checkout
 
     GetPage(name: checkout, page: () => const CheckoutScreen()),
 
-    //cart 
+    //cart
     GetPage(name: cart, page: () => const CartScreen()),
-    
+
     // ignore: prefer_const_constructors
     // GetPage(name: detail, page: () =>  DetailPage(product: productList.first,)),
 

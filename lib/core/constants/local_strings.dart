@@ -113,5 +113,25 @@ class LocalStrings {
   //Notification screen days
   final String today = "Today";
   final String yesterday = "Yesterday";
-  
+
+  //Accounts & Settings screen
+  final String accountTitle = "Account & Settings";
+  final String account = "Account";
+
+  final String notificationSetting = "Notification Setting";
+  final String shippingAddress = "Shipping Address";
+  final String paymentInfo = "Payment Info";
+  final String deleteAccount = "Delete Account";
+
+  final String settings = "App Settings";
+
+  final String enableFace = "Enable Face ID For Log In";
+  final String enablePushNotification = "Enable Push Notifications";
+  final String enableLocation = "Enable Location Services";
+  final String darkMode = "Dark Mode";
+
+  //Filter widget
+  final String gender = "Gender";
+  final String reset = "RESET";
+  final String filterTxt = "Filters";
 }

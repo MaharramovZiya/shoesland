@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
-import 'package:shoesland/logic/blocs/bloc/cart_bloc.dart';
+import 'package:shoesland/logic/blocs/cart_bloc/cart_bloc.dart';
 import 'package:shoesland/presentation/routes/routes.dart';
 import 'package:shoesland/presentation/screens/cart/widgets/custom_float_action_btn.dart';
 import 'package:shoesland/presentation/screens/cart/widgets/lists_card_widget.dart';

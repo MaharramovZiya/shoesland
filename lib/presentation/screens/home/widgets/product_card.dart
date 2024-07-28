@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/data/models/product_model.dart';
+import 'package:shoesland/logic/blocs/cart_bloc/cart_bloc.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 class ProductCard extends StatelessWidget {
@@ -59,24 +61,33 @@ class ProductCard extends StatelessWidget {
                     GeneralTextWidget(
                       "\$${product.price}",
                       textStyle: const TextStyle(
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w500,
                           fontSize: 15,
                           color: Colors.black),
                     ),
-                    GestureDetector(
-                      child: Container(
-                        height: 35,
-                        width: 35,
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10),
-                                bottomRight: Radius.circular(20)),
-                            color: Colours.blueColor),
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        ),
-                      ),
+                    BlocBuilder<CartBloc, CartState>(
+                      builder: (context, state) {
+                        return GestureDetector(
+                          onTap: () {
+                            context
+                                .read<CartBloc>()
+                                .add(AddToCartEvent(product));
+                          },
+                          child: Container(
+                            height: 35,
+                            width: 35,
+                            decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(20)),
+                                color: Colours.blueColor),
+                            child: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 )
