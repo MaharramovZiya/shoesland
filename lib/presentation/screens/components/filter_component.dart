@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
-import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/logic/cubits/filter_cubit.dart';
 import 'package:shoesland/presentation/screens/components/range_slider.dart';
-
 class FilterModalBottomSheet extends StatelessWidget {
   const FilterModalBottomSheet({super.key});
 
@@ -29,8 +27,7 @@ class FilterModalBottomSheet extends StatelessWidget {
           )),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize:
-            MainAxisSize.min, // Alt yaprağın içeriği kadar açılması için
+        mainAxisSize: MainAxisSize.min,
         children: [
           // Line
           Align(
@@ -47,19 +44,17 @@ class FilterModalBottomSheet extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                LocalStrings().filterTxt,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              const Text(
+                "Filters",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               TextButton(
                 onPressed: () {
                   context.read<FilterCubit>().resetFilters();
                 },
-                child: Text(
-                  LocalStrings().reset,
-                  style:
-                      const TextStyle(color: Colours.greyColor, fontSize: 13),
+                child: const Text(
+                  "RESET",
+                  style: TextStyle(color: Colours.greyColor, fontSize: 13),
                 ),
               ),
             ],
@@ -68,14 +63,14 @@ class FilterModalBottomSheet extends StatelessWidget {
           const SizedBox(height: 20),
 
           // Gender select Text
-          Text(
-            LocalStrings().gender,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          const Text(
+            "Gender",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
 
           // Gender select function
-          BlocBuilder<FilterCubit, Map<String, bool>>(
+          BlocBuilder<FilterCubit, Map<String, dynamic>>(
             builder: (context, state) {
               return Wrap(
                 spacing: 8,
@@ -85,16 +80,16 @@ class FilterModalBottomSheet extends StatelessWidget {
                         option,
                         style: const TextStyle(fontSize: 16),
                       ),
-                      selected: state[option] ?? false,
+                      selected: state['Gender'][option] ?? false,
                       onSelected: (bool selected) {
-                        context.read<FilterCubit>().toggleSelect(option);
+                        context.read<FilterCubit>().toggleSelect('Gender', option);
                       },
                       side: BorderSide.none,
                       shape: const StadiumBorder(),
                       backgroundColor: Colours.backgroundColor,
                       selectedColor: Colors.blue,
                       labelStyle: TextStyle(
-                          color: (state[option] ?? false)
+                          color: (state['Gender'][option] ?? false)
                               ? Colors.white
                               : Colours.greyColor));
                 }).toList(),
@@ -105,14 +100,14 @@ class FilterModalBottomSheet extends StatelessWidget {
           const SizedBox(height: 20),
 
           // Size select Text
-          Text(
-            LocalStrings().size,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          const Text(
+            "Size",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
 
           // Size select function
-          BlocBuilder<FilterCubit, Map<String, bool>>(
+          BlocBuilder<FilterCubit, Map<String, dynamic>>(
             builder: (context, state) {
               return Wrap(
                 spacing: 8,
@@ -122,16 +117,16 @@ class FilterModalBottomSheet extends StatelessWidget {
                         size,
                         style: const TextStyle(fontSize: 16),
                       ),
-                      selected: state[size] ?? false,
+                      selected: state['Size'][size] ?? false,
                       onSelected: (bool selected) {
-                        context.read<FilterCubit>().toggleSelect(size);
+                        context.read<FilterCubit>().toggleSelect('Size', size);
                       },
                       side: BorderSide.none,
                       shape: const StadiumBorder(),
                       backgroundColor: Colours.backgroundColor,
                       selectedColor: Colors.blue,
                       labelStyle: TextStyle(
-                          color: (state[size] ?? false)
+                          color: (state['Size'][size] ?? false)
                               ? Colors.white
                               : Colours.greyColor));
                 }).toList(),
@@ -142,9 +137,9 @@ class FilterModalBottomSheet extends StatelessWidget {
           const SizedBox(height: 20),
 
           // Price select Text
-          Text(
-            LocalStrings().price,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          const Text(
+            "Price",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
 
           // Price range slider
