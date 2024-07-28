@@ -19,7 +19,7 @@ Widget buildHomeNavigateTopMenu() {
     customWidget: Text(LocalStrings().storeLocation),
     trallingIcon: const Icon(Icons.shopping_bag_outlined),
     trallingOnPressed: () {
-      Get.toNamed(Routes.checkout);
+      Get.toNamed(Routes.cart);
     },
   );
 }

@@ -32,7 +32,10 @@ class NavigateTopMenu extends StatelessWidget {
             color: Colours.white,
             child: IconButton(
               onPressed: leadingOnPressed,
-              icon: Icon(leadingIcon),
+              icon: Icon(
+                leadingIcon,
+                size: 20,
+              ),
             ),
           ),
         ),
@@ -51,7 +54,7 @@ class NavigateTopMenu extends StatelessWidget {
                   style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
-                    fontSize: 15,
+                    fontSize: 17,
                   ),
                 ),
               ],

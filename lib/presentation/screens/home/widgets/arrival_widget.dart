@@ -39,8 +39,8 @@ class ArrivalWidget extends StatelessWidget {
                     children: [
                       GeneralTextWidget(
                         product.tag,
-                        textStyle:
-                            const TextStyle(fontSize: 13, color: Colours.blueColor),
+                        textStyle: const TextStyle(
+                            fontSize: 13, color: Colours.blueColor),
                       ),
                       GeneralTextWidget(
                         product.name,
@@ -55,7 +55,7 @@ class ArrivalWidget extends StatelessWidget {
                           GeneralTextWidget(
                             "\$${product.price}",
                             textStyle: const TextStyle(
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w500,
                                 fontSize: 15,
                                 color: Colors.black),
                           ),

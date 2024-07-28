@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/core/utils/app_padding.dart';
-import 'package:shoesland/logic/blocs/bloc/cart_bloc.dart';
+import 'package:shoesland/logic/blocs/cart_bloc/cart_bloc.dart';
 import 'package:shoesland/presentation/screens/checkout/widgets/dialog_widget.dart';
 import 'package:shoesland/presentation/screens/checkout/widgets/payment_info_widget.dart';
 import 'package:shoesland/presentation/screens/cart/widgets/custom_float_action_btn.dart';

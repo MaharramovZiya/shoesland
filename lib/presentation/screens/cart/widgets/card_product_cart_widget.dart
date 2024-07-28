@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
 import 'package:shoesland/data/models/cart_item_model.dart';
-import 'package:shoesland/logic/blocs/bloc/cart_bloc.dart';
+import 'package:shoesland/logic/blocs/cart_bloc/cart_bloc.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 class CheckOutProductCart extends StatelessWidget {
