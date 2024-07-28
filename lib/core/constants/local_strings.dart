@@ -109,4 +109,9 @@ class LocalStrings {
   //Notification Screen texts
 
   final String notifacationTitle = 'Notifications';
+
+  //Notification screen days
+  final String today = "Today";
+  final String yesterday = "Yesterday";
+  
 }

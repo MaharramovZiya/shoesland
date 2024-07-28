@@ -10,6 +10,7 @@ class Product {
   final String description;
   final String imagePath;
   final String categoryTag;
+  final String productAds;
 
   Product({
     required this.categoryTag,
@@ -19,6 +20,8 @@ class Product {
     required this.name,
     required this.price,
     required this.imagePath,
+    required this.productAds,
+    
   });
 }
 
@@ -29,11 +32,11 @@ List<String> randomNames = [
   "Nike Vapormax",
   "Nike Infinity",
   "Nike Air Pro",
-      "Nike Free RN",
+  "Nike Free RN",
   "Nike Quest",
   "Nike ZoomX",
-      "Nike Jordan",  "Nike Downshifter",
-
+  "Nike Jordan",
+  "Nike Downshifter",
 ];
 
 List<String> randomDescriptions = [
@@ -57,6 +60,7 @@ List<Product> productList = [
     price: (random.nextDouble() * 1000).roundToDouble(),
     imagePath: LocalImages.shoes_img0,
     categoryTag: "Nike",
+    productAds: "We Have New\nProducts With Offers",
     description: randomDescriptions[random.nextInt(randomDescriptions.length)],
   ),
   Product(
@@ -66,6 +70,8 @@ List<Product> productList = [
     price: (random.nextDouble() * 1000).roundToDouble(),
     imagePath: LocalImages.shoes_img1,
     categoryTag: "Nike",
+    productAds: "We Have New\nProducts With Offers",
+
     description: randomDescriptions[random.nextInt(randomDescriptions.length)],
   ),
   Product(
@@ -75,6 +81,8 @@ List<Product> productList = [
     price: (random.nextDouble() * 1000).roundToDouble(),
     imagePath: LocalImages.shoes_img2,
     categoryTag: "Nike",
+    productAds: "We Have New\nProducts With Offers",
+
     description: randomDescriptions[random.nextInt(randomDescriptions.length)],
   ),
   Product(
@@ -84,6 +92,8 @@ List<Product> productList = [
     price: (random.nextDouble() * 1000).roundToDouble(),
     imagePath: LocalImages.shoes_img3,
     categoryTag: "Nike",
+    productAds: "We Have New\nProducts With Offers",
+
     description: randomDescriptions[random.nextInt(randomDescriptions.length)],
   ),
   Product(
@@ -93,6 +103,8 @@ List<Product> productList = [
     price: (random.nextDouble() * 1000).roundToDouble(),
     imagePath: LocalImages.shoes_img4,
     categoryTag: "Nike",
+    productAds: "We Have New\nProducts With Offers",
+
     description: randomDescriptions[random.nextInt(randomDescriptions.length)],
   ),
   Product(
@@ -102,6 +114,8 @@ List<Product> productList = [
     price: (random.nextDouble() * 1000).roundToDouble(),
     imagePath: LocalImages.shoes_img5,
     categoryTag: "Nike",
+    productAds: "We Have New\nProducts With Offers",
+
     description: randomDescriptions[random.nextInt(randomDescriptions.length)],
   ),
   Product(
@@ -111,6 +125,8 @@ List<Product> productList = [
     price: (random.nextDouble() * 1000).roundToDouble(),
     imagePath: LocalImages.shoes_img6,
     categoryTag: "Nike",
+    productAds: "We Have New\nProducts With Offers",
+
     description: randomDescriptions[random.nextInt(randomDescriptions.length)],
   ),
   Product(
@@ -120,6 +136,8 @@ List<Product> productList = [
     price: (random.nextDouble() * 1000).roundToDouble(),
     imagePath: LocalImages.shoes_img7,
     categoryTag: "Nike",
+    productAds: "We Have New\nProducts With Offers",
+
     description: randomDescriptions[random.nextInt(randomDescriptions.length)],
   ),
 ];

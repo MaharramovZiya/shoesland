@@ -73,13 +73,13 @@ Widget bulildCheckoutNavigateTopMenu() {
 
 //Notifaction screen
 
-Widget buildNotifactionNavigateTopMenu() {
+Widget buildNotifactionNavigateTopMenu(VoidCallback trallingOnPressed) {
   return NavigateTopMenu(
       leadingIcon: Icons.arrow_back_ios_new_rounded,
       leadingOnPressed: () {
         Get.back();
       },
-      trallingOnPressed: () {},
+      trallingOnPressed:trallingOnPressed,
       trallingIcon: GeneralTextWidget(
           textStyle: const TextStyle(color: Colours.blueColor), "Clear All"),
       title: LocalStrings().notifacationTitle);

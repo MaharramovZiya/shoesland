@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/logic/blocs/bloc/cart_bloc.dart';
+import 'package:shoesland/logic/cubits/notification_cubit.dart';
 import 'package:shoesland/logic/cubits/shoe_counter.dart';
 import 'package:shoesland/presentation/routes/routes.dart';
 
@@ -30,6 +31,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider<ShoeCounterCubit>(
             create: (context) => ShoeCounterCubit(),
+          ),
+            BlocProvider<NotificationProductCubit>(
+            create: (context) => NotificationProductCubit(),
           ),
         ],
         child: GetMaterialApp(
