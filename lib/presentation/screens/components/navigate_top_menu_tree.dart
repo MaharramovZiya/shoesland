@@ -11,7 +11,7 @@ import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 //Home Screen
 
-Widget buildHomeNavigateTopMenu() {
+Widget buildHomeNavigateTopMenu(context) {
   return NavigateTopMenu(
     leadingIcon: Icons.window_outlined,
     leadingOnPressed: () {},

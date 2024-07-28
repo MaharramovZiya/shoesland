@@ -32,7 +32,7 @@ Widget _buildUi(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            buildHomeNavigateTopMenu(),
+            buildHomeNavigateTopMenu(context),
             const SizedBox(
               height: 20,
             ),
