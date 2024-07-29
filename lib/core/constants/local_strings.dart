@@ -129,4 +129,18 @@ class LocalStrings {
   final String enablePushNotification = "Enable Push Notifications";
   final String enableLocation = "Enable Location Services";
   final String darkMode = "Dark Mode";
+
+  //Filter widget
+  final String gender = "Gender";
+  final String reset = "RESET";
+  final String filterTxt = "Filters";
+  final String apply = 'Apply';
+
+  //Best seller screen
+
+  final String bestSellerScreenTitle = "Best Sellers";
+
+  //Favourite screen
+  final String favouriteTitle = "Favourite";
+  
 }
