@@ -7,8 +7,8 @@ part 'favorite_state.dart';
 
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   FavoriteBloc() : super(FavoriteInitial()) {
-   
     on<AddToFavouriteEvent>(_onUpdateFavouriteItems);
+    on<DeleteFavouriteEvent>(_onDeleteFavouirtes);
   }
 
   void _onUpdateFavouriteItems(
@@ -22,6 +22,13 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
       updateFavoriteItems.add(event.product);
 
       emit(FavoriteUpdated(updateFavoriteItems));
+    }
+  }
+
+  void _onDeleteFavouirtes(
+      DeleteFavouriteEvent event, Emitter<FavoriteState> emit) {
+    if (state is FavoriteUpdated) {
+      emit(FavoriteUpdated([]));
     }
   }
 }

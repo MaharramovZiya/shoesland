@@ -55,7 +55,10 @@ class LocalStrings {
 
   //search txt
 
-  final String lookforShoes = 'Looking for shoes';
+  final String lookforShoes = 'Search Your Shoes';
+  final String search = "Search";
+  final String shoes = "Shoes";
+  final String cancel = "Cancel";
 
   // see all txt
 
@@ -65,7 +68,7 @@ class LocalStrings {
 
   //detail page
 
-  final String detailPageTitle = "Men's shoe";
+  final String detailPageTitle = "Men's Shoes";
 
   final String gallery = "Gallery";
   final String size = "Size";
@@ -142,5 +145,5 @@ class LocalStrings {
 
   //Favourite screen
   final String favouriteTitle = "Favourite";
-  
+  final String emptyFav = "Doesn't has Favourites Yet :)";
 }

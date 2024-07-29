@@ -4,6 +4,7 @@ import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
 import 'package:shoesland/data/models/cart_item_model.dart';
 import 'package:shoesland/logic/blocs/cart_bloc/cart_bloc.dart';
+import 'package:shoesland/logic/blocs/favorite_bloc/favorite_bloc.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 class CheckOutProductCart extends StatelessWidget {
@@ -23,6 +24,7 @@ class CheckOutProductCart extends StatelessWidget {
       height: 130,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           //IMAGE
@@ -110,13 +112,18 @@ class CheckOutProductCart extends StatelessWidget {
             ],
           ),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "\$${(cartItem.product.price * cartItem.quantity).toStringAsFixed(2)}",
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
+              IconButton(
+                  onPressed: () {
+                    context
+                        .read<FavoriteBloc>()
+                        .add(AddToFavouriteEvent(cartItem.product));
+                  },
+                  icon: const Icon(
+                    Icons.favorite_border,
+                  )),
               IconButton(
                   style: const ButtonStyle(
                       foregroundColor: WidgetStatePropertyAll(Colors.red)),

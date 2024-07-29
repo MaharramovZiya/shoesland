@@ -33,6 +33,8 @@ class LocalImages {
 
   static const completedOrder = 'assets/lottie/completed.json';
   static const soldLottie = 'assets/lottie/sold.json';
+  static const cart = 'assets/lottie/cart.json';
+  static const favourite = 'assets/lottie/favorite.json';
 
   //Minus and plus
   static const minus = 'assets/images/minus.png';

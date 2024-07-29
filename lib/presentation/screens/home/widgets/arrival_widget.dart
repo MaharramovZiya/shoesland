@@ -31,38 +31,36 @@ class ArrivalWidget extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Flexible(
-                  flex: 1,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GeneralTextWidget(
+                    product.tag,
+                    textStyle: const TextStyle(
+                        fontSize: 13, color: Colours.blueColor),
+                  ),
+                  GeneralTextWidget(
+                    product.name,
+                    textStyle: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        color: Colors.black),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GeneralTextWidget(
-                        product.tag,
+                        "\$${product.price}",
                         textStyle: const TextStyle(
-                            fontSize: 13, color: Colours.blueColor),
-                      ),
-                      GeneralTextWidget(
-                        product.name,
-                        textStyle: const TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
                             color: Colors.black),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GeneralTextWidget(
-                            "\$${product.price}",
-                            textStyle: const TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15,
-                                color: Colors.black),
-                          ),
-                        ],
-                      )
                     ],
-                  )),
+                  )
+                ],
+              ),
             ),
             Flexible(
                 flex: 1,

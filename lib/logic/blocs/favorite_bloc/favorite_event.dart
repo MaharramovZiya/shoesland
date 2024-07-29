@@ -14,4 +14,8 @@ class AddToFavouriteEvent extends FavoriteEvent {
   List<Object> get props => [product];
 }
 
-
+class DeleteFavouriteEvent extends FavoriteEvent {
+  const DeleteFavouriteEvent();
+  @override
+  List<Object> get props => [];
+}

@@ -16,3 +16,5 @@ final class FavoriteUpdated extends FavoriteState {
   @override
   List<Object> get props => [productList];
 }
+
+//Empty loaded state
