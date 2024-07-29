@@ -21,7 +21,7 @@ class NavigateTopMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isTextWidget = trallingIcon is Text;
+    bool isDiffWidget = trallingIcon is Text || trallingIcon is Row;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,8 +53,8 @@ class NavigateTopMenu extends StatelessWidget {
                   title,
                   style: const TextStyle(
                     color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
                   ),
                 ),
               ],
@@ -65,7 +65,7 @@ class NavigateTopMenu extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Container(
-              color: isTextWidget ? Colors.transparent : Colours.white,
+              color: isDiffWidget ? Colors.transparent : Colours.white,
               child: IconButton(
                 onPressed: trallingOnPressed,
                 icon: trallingIcon ?? Container(),

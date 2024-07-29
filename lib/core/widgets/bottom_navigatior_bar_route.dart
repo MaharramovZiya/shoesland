@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoesland/core/constants/colours.dart';
-import 'package:shoesland/presentation/screens/cart/cart_screen.dart';
+import 'package:shoesland/presentation/screens/best_seller/best_seller_screen.dart';
 import 'package:shoesland/presentation/screens/favorites/favorites_screen.dart';
 import 'package:shoesland/presentation/screens/home/home_screen.dart';
 import 'package:shoesland/presentation/screens/notifications/notification_screen.dart';
@@ -18,7 +18,7 @@ class _BottomNavState extends State<BottomNav> {
   static const List<Widget> _pages = <Widget>[
     HomeScreen(),
     FavoritesScreen(),
-    CartScreen(),
+    BestSellerScreen(),
     NotificationScreen(),
     ProfileScreen(),
   ];

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/logic/blocs/cart_bloc/cart_bloc.dart';
+import 'package:shoesland/logic/blocs/favorite_bloc/favorite_bloc.dart';
 import 'package:shoesland/logic/cubits/filter_cubit.dart';
 import 'package:shoesland/logic/cubits/notification_cubit.dart';
 import 'package:shoesland/logic/cubits/shoe_counter.dart';
@@ -36,8 +37,11 @@ class MyApp extends StatelessWidget {
           BlocProvider<NotificationProductCubit>(
             create: (context) => NotificationProductCubit(),
           ),
-            BlocProvider<FilterCubit>(
+          BlocProvider<FilterCubit>(
             create: (context) => FilterCubit(),
+          ),
+          BlocProvider<FavoriteBloc>(
+            create: (context) => FavoriteBloc(),
           ),
         ],
         child: GetMaterialApp(
@@ -49,7 +53,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colours.backgroundColor,
             ),
           ),
-          initialRoute: Routes.home,
+          initialRoute: Routes.favourites,
           getPages: Routes.getPages,
         ));
   }

@@ -134,4 +134,13 @@ class LocalStrings {
   final String gender = "Gender";
   final String reset = "RESET";
   final String filterTxt = "Filters";
+  final String apply = 'Apply';
+
+  //Best seller screen
+
+  final String bestSellerScreenTitle = "Best Sellers";
+
+  //Favourite screen
+  final String favouriteTitle = "Favourite";
+  
 }

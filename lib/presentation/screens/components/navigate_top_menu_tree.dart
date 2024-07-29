@@ -101,3 +101,28 @@ Widget buildAccountNavigateTopMenu() {
       trallingIcon: const Text(""),
       title: LocalStrings().accountTitle);
 }
+
+//Best seller screen navigate top menu
+
+Widget buildBestSellerNavigateTopMenu(context) {
+  return NavigateTopMenu(
+      leadingIcon: Icons.screen_search_desktop_outlined,
+      leadingOnPressed: () {},
+      trallingIcon: const Icon(Icons.format_list_bulleted_sharp),
+      trallingOnPressed: () {
+        showCustomModalBottomSheet(context, const FilterModalBottomSheet());
+      },
+      title: LocalStrings().bestSellerScreenTitle);
+}
+
+//Favorite navigate top menu
+Widget buildFavoriteNavigateTopMenu(context) {
+  return NavigateTopMenu(
+      leadingIcon: Icons.arrow_back_ios_new_rounded,
+      leadingOnPressed: () {
+        Get.back();
+      },
+      trallingOnPressed: () {},
+      trallingIcon: const Text(""),
+      title: LocalStrings().favouriteTitle);
+}
