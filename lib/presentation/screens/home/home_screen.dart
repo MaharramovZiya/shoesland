@@ -12,7 +12,6 @@ import 'package:shoesland/presentation/screens/home/widgets/arrival_widget.dart'
 import 'package:shoesland/presentation/screens/home/widgets/product_card.dart';
 import 'package:shoesland/presentation/screens/home/widgets/search_widget.dart';
 import 'package:shoesland/presentation/screens/home/widgets/section_header.dart';
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 

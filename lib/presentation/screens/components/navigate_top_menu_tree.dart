@@ -79,10 +79,8 @@ Widget bulildCheckoutNavigateTopMenu() {
 
 Widget buildNotifactionNavigateTopMenu(VoidCallback trallingOnPressed) {
   return NavigateTopMenu(
-      leadingIcon: Icons.arrow_back_ios_new_rounded,
-      leadingOnPressed: () {
-        Get.back();
-      },
+      leadingIcon: Icons.sms_rounded,
+      leadingOnPressed: () {},
       trallingOnPressed: trallingOnPressed,
       trallingIcon: GeneralTextWidget(
           textStyle: const TextStyle(color: Colours.blueColor), "Clear All"),
@@ -100,4 +98,62 @@ Widget buildAccountNavigateTopMenu() {
       trallingOnPressed: () {},
       trallingIcon: const Text(""),
       title: LocalStrings().accountTitle);
+}
+
+//Best seller screen navigate top menu
+
+Widget buildBestSellerNavigateTopMenu(context) {
+  return NavigateTopMenu(
+      leadingIcon: Icons.window_outlined,
+      leadingOnPressed: () {},
+      trallingIcon: const Icon(Icons.format_list_bulleted_sharp),
+      trallingOnPressed: () {
+        showCustomModalBottomSheet(context, const FilterModalBottomSheet());
+      },
+      title: LocalStrings().bestSellerScreenTitle);
+}
+
+//Favorite navigate top menu
+Widget buildFavoriteNavigateTopMenu(context, VoidCallback trallingOnPressed) {
+  return NavigateTopMenu(
+      leadingIcon: Icons.arrow_back_ios_new_rounded,
+      leadingOnPressed: () {
+        Get.back();
+      },
+      trallingOnPressed: trallingOnPressed,
+      trallingIcon: const Text(
+        "Clear",
+        style: TextStyle(color: Colours.blueColor),
+      ),
+      title: LocalStrings().favouriteTitle);
+}
+
+//search screen
+
+Widget buildSearchNavigateTopMenu(context) {
+  return NavigateTopMenu(
+      leadingIcon: Icons.shopping_bag_outlined,
+      leadingOnPressed: () {
+        Get.toNamed(Routes.favourites);
+      },
+      trallingOnPressed: () {},
+      trallingIcon: Text(
+        LocalStrings().cancel,
+        style: const TextStyle(color: Colours.blueColor),
+      ),
+      title: LocalStrings().search);
+}
+
+Widget buildProfileNavigateTopMenu(context) {
+  return NavigateTopMenu(
+      leadingIcon: Icons.settings,
+      leadingOnPressed: () {},
+      trallingOnPressed: () {
+        Get.toNamed(Routes.bottomNavigationBar);
+      },
+      trallingIcon: const Icon(
+        Icons.edit,
+        color: Colours.blueColor,
+      ),
+      title: LocalStrings().profilePageTitle);
 }

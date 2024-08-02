@@ -1,10 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
+import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
+import 'package:shoesland/core/constants/local_images.dart';
 import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/logic/blocs/cart_bloc/cart_bloc.dart';
 import 'package:shoesland/presentation/screens/cart/widgets/card_product_cart_widget.dart';
+import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
 
 class ListCardsWidget extends StatelessWidget {
   const ListCardsWidget({
@@ -33,7 +36,24 @@ class ListCardsWidget extends StatelessWidget {
         return SizedBox(
           height: size.height / 1.5,
           child: Center(
-            child: Text(LocalStrings().emptyCart),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Lottie.asset(LocalImages.cart),
+                Align(
+                  alignment: Alignment.center,
+                  child: GeneralTextWidget(
+                    LocalStrings().emptyCart,
+                    textAlign: TextAlign.center,
+                    textStyle: const TextStyle(
+                        color: Colours.blackLikeToColor,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },

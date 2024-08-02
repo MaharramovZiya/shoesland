@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/core/constants/custom_size.dart';
+import 'package:shoesland/core/constants/local_strings.dart';
 import 'package:shoesland/logic/cubits/filter_cubit.dart';
 import 'package:shoesland/presentation/screens/components/range_slider.dart';
+import 'package:shoesland/presentation/widgets/custom_button.dart';
+
 class FilterModalBottomSheet extends StatelessWidget {
   const FilterModalBottomSheet({super.key});
 
@@ -82,7 +85,9 @@ class FilterModalBottomSheet extends StatelessWidget {
                       ),
                       selected: state['Gender'][option] ?? false,
                       onSelected: (bool selected) {
-                        context.read<FilterCubit>().toggleSelect('Gender', option);
+                        context
+                            .read<FilterCubit>()
+                            .toggleSelect('Gender', option);
                       },
                       side: BorderSide.none,
                       shape: const StadiumBorder(),
@@ -144,6 +149,13 @@ class FilterModalBottomSheet extends StatelessWidget {
 
           // Price range slider
           const PriceRangeSlider(),
+          const SizedBox(height: 20),
+          //Button
+          CustomButton(
+              text: LocalStrings().apply,
+              onPressed: () {
+                Navigator.pop(context);
+              })
         ],
       ),
     );

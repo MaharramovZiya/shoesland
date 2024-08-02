@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shoesland/core/constants/colours.dart';
-import 'package:shoesland/presentation/screens/cart/cart_screen.dart';
+import 'package:shoesland/presentation/screens/best_seller/best_seller_screen.dart';
 import 'package:shoesland/presentation/screens/favorites/favorites_screen.dart';
 import 'package:shoesland/presentation/screens/home/home_screen.dart';
 import 'package:shoesland/presentation/screens/notifications/notification_screen.dart';
 import 'package:shoesland/presentation/screens/profile/profile_screen.dart';
+import 'package:shoesland/presentation/screens/search_screen/search_screen.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -17,8 +18,8 @@ class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
   static const List<Widget> _pages = <Widget>[
     HomeScreen(),
-    FavoritesScreen(),
-    CartScreen(),
+    SearchScreen(),
+    BestSellerScreen(),
     NotificationScreen(),
     ProfileScreen(),
   ];
@@ -74,7 +75,7 @@ class _BottomNavState extends State<BottomNav> {
                 onPressed: () => _onItemTapped(0),
               ),
               IconButton(
-                icon: const Icon(Icons.favorite_border),
+                icon: const Icon(Icons.search ),
                 onPressed: () => _onItemTapped(1),
               ),
               const SizedBox(width: 48),

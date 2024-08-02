@@ -55,7 +55,10 @@ class LocalStrings {
 
   //search txt
 
-  final String lookforShoes = 'Looking for shoes';
+  final String lookforShoes = 'Search Your Shoes';
+  final String search = "Search";
+  final String shoes = "Shoes";
+  final String cancel = "Cancel";
 
   // see all txt
 
@@ -63,9 +66,13 @@ class LocalStrings {
 
   final String bestSeller = 'BEST SELLER';
 
+  //profile page
+
+  final String profilePageTitle = 'Profile';
+
   //detail page
 
-  final String detailPageTitle = "Men's shoe";
+  final String detailPageTitle = "Men's Shoes";
 
   final String gallery = "Gallery";
   final String size = "Size";
@@ -134,4 +141,13 @@ class LocalStrings {
   final String gender = "Gender";
   final String reset = "RESET";
   final String filterTxt = "Filters";
+  final String apply = 'Apply';
+
+  //Best seller screen
+
+  final String bestSellerScreenTitle = "Best Sellers";
+
+  //Favourite screen
+  final String favouriteTitle = "Favourite";
+  final String emptyFav = "Doesn't has Favourites Yet :)";
 }

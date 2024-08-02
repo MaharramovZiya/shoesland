@@ -4,6 +4,7 @@ import 'package:shoesland/presentation/screens/account_settings/account_screen.d
 import 'package:shoesland/presentation/screens/auth/login/login_screen.dart';
 import 'package:shoesland/presentation/screens/auth/recovery_password/recovery_screen.dart';
 import 'package:shoesland/presentation/screens/auth/register/register_screen.dart';
+import 'package:shoesland/presentation/screens/best_seller/best_seller_screen.dart';
 import 'package:shoesland/presentation/screens/checkout/checkout_screen.dart';
 import 'package:shoesland/presentation/screens/cart/cart_screen.dart';
 import 'package:shoesland/presentation/screens/favorites/favorites_screen.dart';
@@ -49,7 +50,7 @@ class Routes {
         transition: Transition.fade),
     GetPage(name: home, page: () => const HomeScreen()),
     GetPage(name: favourites, page: () => const FavoritesScreen()),
-    GetPage(name: cartScreen, page: () => const CartScreen()),
+    GetPage(name: bestSeller, page: () => const BestSellerScreen()),
     GetPage(name: notifications, page: () => const NotificationScreen()),
     GetPage(name: profile, page: () => const ProfileScreen()),
 
