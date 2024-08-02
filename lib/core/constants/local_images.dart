@@ -46,4 +46,7 @@ class LocalImages {
 
   //paypal
   static const paypal = 'assets/images/paypal.png';
+
+  //user
+  static const user = 'assets/images/man.jpg';
 }

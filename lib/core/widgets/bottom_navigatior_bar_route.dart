@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoesland/core/constants/colours.dart';
 import 'package:shoesland/presentation/screens/best_seller/best_seller_screen.dart';
+import 'package:shoesland/presentation/screens/favorites/favorites_screen.dart';
 import 'package:shoesland/presentation/screens/home/home_screen.dart';
 import 'package:shoesland/presentation/screens/notifications/notification_screen.dart';
 import 'package:shoesland/presentation/screens/profile/profile_screen.dart';
@@ -17,7 +18,7 @@ class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
   static const List<Widget> _pages = <Widget>[
     HomeScreen(),
-    SearchScreen(), // search screen
+    SearchScreen(),
     BestSellerScreen(),
     NotificationScreen(),
     ProfileScreen(),
@@ -74,7 +75,7 @@ class _BottomNavState extends State<BottomNav> {
                 onPressed: () => _onItemTapped(0),
               ),
               IconButton(
-                icon: const Icon(Icons.search),
+                icon: const Icon(Icons.search ),
                 onPressed: () => _onItemTapped(1),
               ),
               const SizedBox(width: 48),

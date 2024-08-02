@@ -3,7 +3,6 @@ import 'package:shoesland/core/utils/app_padding.dart';
 import 'package:shoesland/data/models/product_model.dart';
 import 'package:shoesland/presentation/screens/best_seller/widgets/best_seller_cart_widget.dart';
 import 'package:shoesland/presentation/screens/components/navigate_top_menu_tree.dart';
-
 class BestSellerScreen extends StatelessWidget {
   const BestSellerScreen({super.key});
 

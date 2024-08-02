@@ -66,6 +66,10 @@ class LocalStrings {
 
   final String bestSeller = 'BEST SELLER';
 
+  //profile page
+
+  final String profilePageTitle = 'Profile';
+
   //detail page
 
   final String detailPageTitle = "Men's Shoes";

@@ -10,7 +10,6 @@ import 'package:shoesland/logic/blocs/favorite_bloc/favorite_bloc.dart';
 import 'package:shoesland/presentation/screens/components/navigate_top_menu_tree.dart';
 import 'package:shoesland/presentation/screens/favorites/widgets/favorites_cart.dart';
 import 'package:shoesland/presentation/widgets/general_txt_widget.dart';
-
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
 

@@ -79,7 +79,7 @@ Widget bulildCheckoutNavigateTopMenu() {
 
 Widget buildNotifactionNavigateTopMenu(VoidCallback trallingOnPressed) {
   return NavigateTopMenu(
-      leadingIcon: Icons.window_outlined,
+      leadingIcon: Icons.sms_rounded,
       leadingOnPressed: () {},
       trallingOnPressed: trallingOnPressed,
       trallingIcon: GeneralTextWidget(
@@ -132,14 +132,28 @@ Widget buildFavoriteNavigateTopMenu(context, VoidCallback trallingOnPressed) {
 
 Widget buildSearchNavigateTopMenu(context) {
   return NavigateTopMenu(
-      leadingIcon: Icons.window_outlined,
-      leadingOnPressed: () {},
-      trallingOnPressed: () {
-        Get.toNamed(Routes.bottomNavigationBar);
+      leadingIcon: Icons.shopping_bag_outlined,
+      leadingOnPressed: () {
+        Get.toNamed(Routes.favourites);
       },
+      trallingOnPressed: () {},
       trallingIcon: Text(
         LocalStrings().cancel,
         style: const TextStyle(color: Colours.blueColor),
       ),
       title: LocalStrings().search);
+}
+
+Widget buildProfileNavigateTopMenu(context) {
+  return NavigateTopMenu(
+      leadingIcon: Icons.settings,
+      leadingOnPressed: () {},
+      trallingOnPressed: () {
+        Get.toNamed(Routes.bottomNavigationBar);
+      },
+      trallingIcon: const Icon(
+        Icons.edit,
+        color: Colours.blueColor,
+      ),
+      title: LocalStrings().profilePageTitle);
 }
