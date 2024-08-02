@@ -19,7 +19,7 @@ Like I said it's just a design. The program has many bugs and often lacks clean 
 I will connect the program to the real-time database and store the data there, and the user will be able to register and view the products conveniently.
 
 ## Images
-[Homepage](https://github.com/MaharramovZiya/shoesland/blob/master/photo_5289538811468048114_y.jpg)
+![Homepage](https://github.com/MaharramovZiya/shoesland/blob/master/photo_5289538811468048114_y.jpg)
 The Search function is the future.
 The edit function will be added to the profile page.
 Although I made the filter just as a design, in the future it will change and the shoes will actually be selected according to the filters.
